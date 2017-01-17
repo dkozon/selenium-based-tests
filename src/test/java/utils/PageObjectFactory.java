@@ -9,14 +9,14 @@ import pagepobjects.PasswordPage;
 /**
  * Created by Dariusz_Kozon on 12-Jan-17.
  */
-public class PageObjectManager {
+public class PageObjectFactory {
 
     private final WebDriver webDriver;
     private MainPage mainPage;
     private LoginPage loginPage;
     private PasswordPage passwordPage;
 
-    public PageObjectManager(WebDriver webDriver) {
+    public PageObjectFactory(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
 

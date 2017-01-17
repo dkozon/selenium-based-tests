@@ -6,7 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import utils.PageObjectManager;
+import utils.PageObjectFactory;
 import utils.UrlProvider;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,14 +17,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class GmailLoginTest {
 
     private WebDriver webDriver;
-    private PageObjectManager manager;
+    private PageObjectFactory manager;
     private String url;
-
 
     @BeforeMethod
     private void setUp() {
         webDriver = new FirefoxDriver();
-        manager = new PageObjectManager(webDriver);
+        manager = new PageObjectFactory(webDriver);
         url = UrlProvider.GOOGLE_MAIN.getUrl();
     }
 
