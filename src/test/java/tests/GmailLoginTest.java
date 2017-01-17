@@ -6,7 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import utils.PageObjectFactory;
+import utils.PageObjectManager;
 import utils.UrlProvider;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,20 +17,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class GmailLoginTest {
 
     private WebDriver webDriver;
-    private PageObjectFactory manager;
+    private PageObjectManager manager;
     private String url;
 
     @BeforeMethod
     private void setUp() {
         webDriver = new FirefoxDriver();
-        manager = new PageObjectFactory(webDriver);
+        manager = new PageObjectManager(webDriver);
         url = UrlProvider.GOOGLE_MAIN.getUrl();
     }
 
     @AfterMethod
     private void tearDown() {
-        if (webDriver != null)
+        if (webDriver != null) {
             webDriver.quit();
+        }
     }
 
     @Test(dataProvider = "loginGmailData")
@@ -45,7 +46,7 @@ public class GmailLoginTest {
                 .enterMailAddress(login)
                 .clickNextButton();
         assertThat(manager.passwordPage().isLoaded()).isTrue();
-        assertThat(manager.passwordPage().isEmailDisplayed(login + "@gmail.com")).isTrue();
+        assertThat(manager.passwordPage().getEmailDisplayed()).contains(login + "@gmail.com");
         assertThat(manager.passwordPage().isStaySignedInCheckboxSelected()).isTrue();
         manager.passwordPage()
                 .enterPassword(password)

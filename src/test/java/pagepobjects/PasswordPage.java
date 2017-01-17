@@ -45,8 +45,8 @@ public class PasswordPage extends BasePage{
         return customWait.isElementPresent(signInButton);
     }
 
-    public boolean isEmailDisplayed(String emailAddress) {
-        return customWait.getElementText(emailDisplayText).contains(emailAddress);
+    public String getEmailDisplayed() {
+        return customWait.createFluentWait().until((WebDriver ignored) -> emailDisplayText.getText());
     }
 
     public boolean isStaySignedInCheckboxSelected() {
