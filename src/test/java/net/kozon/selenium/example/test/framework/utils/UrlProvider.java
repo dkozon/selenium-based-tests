@@ -5,7 +5,7 @@ package net.kozon.selenium.example.test.framework.utils;
  */
 public enum UrlProvider {
 
-    GOOGLE_MAIN("https://www.google.com/");
+    GOOGLE_MAIN("https://www.google.com/en");
 
     private final String baseUrl;
 
