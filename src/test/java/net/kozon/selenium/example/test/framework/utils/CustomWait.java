@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Time;
 
@@ -17,6 +19,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  */
 public class CustomWait {
 
+    private static Logger logger = LoggerFactory.getLogger(CustomWait.class);
     private static final int DEFAULT_TIMEOUT_IN_SEC = 10;
     private final WebDriver webDriver;
 
@@ -34,6 +37,7 @@ public class CustomWait {
             wait.until(ExpectedConditions.visibilityOf(element));
             return true;
         } catch (TimeoutException e) {
+            logger.error("Element not found!", e);
             return false;
         }
     }
@@ -44,6 +48,7 @@ public class CustomWait {
             wait.until(ExpectedConditions.elementToBeClickable(element));
             return true;
         } catch (TimeoutException e) {
+            logger.error("Element not found!", e);
             return false;
         }
     }
@@ -54,6 +59,7 @@ public class CustomWait {
             wait.until(ExpectedConditions.invisibilityOfElementLocated(by));
             return true;
         } catch (TimeoutException e) {
+            logger.error("Element not found!", e);
             return false;
         }
     }
