@@ -1,15 +1,15 @@
-package pagepobjects;
+package net.kozon.selenium.example.test.framework.pageObjects.googleLogin;
 
+import net.kozon.selenium.example.test.framework.pageObjects.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.BasePage;
-import utils.CustomWait;
+import net.kozon.selenium.example.test.framework.utils.CustomWait;
 
 /**
  * Created by Dariusz_Kozon on 16-Jan-17.
  */
-public class PasswordPage extends BasePage{
+public class PasswordGooglePage extends BasePage {
 
     @FindBy(id = "signIn")
     private WebElement signInButton;
@@ -25,17 +25,17 @@ public class PasswordPage extends BasePage{
 
     private CustomWait customWait;
 
-    public PasswordPage(WebDriver webDriver) {
+    public PasswordGooglePage(WebDriver webDriver) {
         super(webDriver);
         customWait = new CustomWait(webDriver);
     }
 
-    public PasswordPage signInButtonClick() {
+    public PasswordGooglePage signInButtonClick() {
         signInButton.click();
         return this;
     }
 
-    public PasswordPage enterPassword(String password) {
+    public PasswordGooglePage enterPassword(String password) {
         passwordField.sendKeys(password);
         return this;
     }

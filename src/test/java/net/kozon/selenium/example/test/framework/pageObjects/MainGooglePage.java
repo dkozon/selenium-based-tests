@@ -1,27 +1,26 @@
-package pagepobjects;
+package net.kozon.selenium.example.test.framework.pageObjects;
 
+import net.kozon.selenium.example.test.framework.utils.CustomWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.BasePage;
-import utils.CustomWait;
 
 /**
  * Created by Dariusz_Kozon on 16-Jan-17.
  */
-public class MainPage extends BasePage {
+public class MainGooglePage extends BasePage {
 
     @FindBy(xpath = ".//a[contains(text(), 'Sign in')]")
     private WebElement signInButton;
 
     private CustomWait customWait;
 
-    public MainPage(WebDriver webDriver) {
+    public MainGooglePage(WebDriver webDriver) {
         super(webDriver);
         customWait = new CustomWait(webDriver);
     }
 
-    public MainPage signInButtonClick() {
+    public MainGooglePage signInButtonClick() {
         signInButton.click();
         return this;
     }

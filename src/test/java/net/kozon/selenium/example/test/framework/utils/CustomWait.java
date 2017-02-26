@@ -1,4 +1,4 @@
-package utils;
+package net.kozon.selenium.example.test.framework.utils;
 
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;

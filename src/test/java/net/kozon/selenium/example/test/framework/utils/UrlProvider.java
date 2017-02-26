@@ -1,4 +1,4 @@
-package utils;
+package net.kozon.selenium.example.test.framework.utils;
 
 /**
  * Created by Dariusz_Kozon on 16-Jan-17.

@@ -1,4 +1,4 @@
-package utils;
+package net.kozon.selenium.example.test.framework.pageObjects;
 
 import org.openqa.selenium.WebDriver;
 

@@ -1,15 +1,15 @@
-package pagepobjects;
+package net.kozon.selenium.example.test.framework.pageObjects.googleLogin;
 
+import net.kozon.selenium.example.test.framework.pageObjects.BasePage;
+import net.kozon.selenium.example.test.framework.utils.CustomWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.BasePage;
-import utils.CustomWait;
 
 /**
  * Created by Dariusz_Kozon on 12-Jan-17.
  */
-public class LoginPage extends BasePage {
+public class LoginGooglePage extends BasePage {
 
     @FindBy(xpath = ".//input[@id='Email']")
     private WebElement emailField;
@@ -19,17 +19,17 @@ public class LoginPage extends BasePage {
 
     private CustomWait customWait;
 
-    public LoginPage(WebDriver webDriver) {
+    public LoginGooglePage(WebDriver webDriver) {
         super(webDriver);
         customWait = new CustomWait(webDriver);
     }
 
-    public LoginPage enterMailAddress(String login) {
+    public LoginGooglePage enterMailAddress(String login) {
         emailField.sendKeys(login);
         return this;
     }
 
-    public LoginPage clickNextButton() {
+    public LoginGooglePage clickNextButton() {
         nextButton.click();
         return this;
     }

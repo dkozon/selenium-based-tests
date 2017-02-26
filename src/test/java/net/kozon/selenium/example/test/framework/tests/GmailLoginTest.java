@@ -1,4 +1,4 @@
-package tests;
+package net.kozon.selenium.example.test.framework.tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -6,8 +6,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import utils.PageObjectManager;
-import utils.UrlProvider;
+import net.kozon.selenium.example.test.framework.utils.PageObjectManager;
+import net.kozon.selenium.example.test.framework.utils.UrlProvider;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
