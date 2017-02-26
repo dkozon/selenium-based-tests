@@ -59,7 +59,7 @@ public class CustomWait {
             wait.until(ExpectedConditions.invisibilityOfElementLocated(by));
             return true;
         } catch (TimeoutException e) {
-            logger.error("Element not found!", e);
+            logger.error("Element should not be visible!", e);
             return false;
         }
     }
