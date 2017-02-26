@@ -1,11 +1,14 @@
 package net.kozon.selenium.example.test.framework.utils;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.sql.Time;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
@@ -29,6 +32,26 @@ public class CustomWait {
         FluentWait<WebDriver> wait = createFluentWait().withTimeout(DEFAULT_TIMEOUT_IN_SEC, SECONDS);
         try {
             wait.until(ExpectedConditions.visibilityOf(element));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+
+    public boolean isElementClicable(final WebElement element) {
+        FluentWait<WebDriver> wait = createFluentWait().withTimeout(DEFAULT_TIMEOUT_IN_SEC, SECONDS);
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+
+    public boolean isElementDisappear(final By by) {
+        FluentWait<WebDriver> wait = createFluentWait().withTimeout(DEFAULT_TIMEOUT_IN_SEC, SECONDS);
+        try {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(by));
             return true;
         } catch (TimeoutException e) {
             return false;
