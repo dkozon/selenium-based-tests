@@ -22,12 +22,10 @@ public class GMailLoginTest extends BaseTest {
 
     @AfterMethod
     private void tearDown() {
-        if (webDriver != null) {
-            webDriver.quit();
-        }
+        webDriver.quit();
     }
 
-    @Test(dataProvider = "loginGmailData")
+    @Test(dataProvider = "loginGMailData")
     public void shouldNotLoggedInTest(String login, String password) {
         manager.mainPage()
                 .loadPage(url);
@@ -46,7 +44,7 @@ public class GMailLoginTest extends BaseTest {
                 .signInButtonClick();
     }
 
-    @DataProvider(name = "loginGmailData")
+    @DataProvider(name = "loginGMailData")
     public Object[][] testData() {
         return new Object[][]{
                 {"epam321", "testtest1"}
