@@ -1,4 +1,4 @@
-package net.kozon.selenium.example.test.framework.utils;
+package net.kozon.selenium.example.test.framework.common.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -45,7 +45,7 @@ public class CustomWait {
         }
     }
 
-    public boolean isElementClicable(final WebElement element) {
+    public boolean isElementClickable(final WebElement element) {
         FluentWait<WebDriver> wait = createWait(DEFAULT_TIMEOUT_IN_SEC);
         try {
             wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -70,7 +70,7 @@ public class CustomWait {
     public void clickElement(final By by, final int timeoutInSeconds) {
         FluentWait<WebDriver> wait = createWait(timeoutInSeconds);
         wait.until(driver -> {
-            if(isElementClicable(driver.findElement(by))) {
+            if(isElementClickable(driver.findElement(by))) {
                 driver.findElement(by).click();
             }
             return true;

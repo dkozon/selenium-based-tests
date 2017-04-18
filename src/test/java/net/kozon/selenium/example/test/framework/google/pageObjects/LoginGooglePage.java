@@ -1,7 +1,7 @@
-package net.kozon.selenium.example.test.framework.pageObjects.googleLogin;
+package net.kozon.selenium.example.test.framework.google.pageObjects;
 
-import net.kozon.selenium.example.test.framework.pageObjects.BasePage;
-import net.kozon.selenium.example.test.framework.utils.CustomWait;
+import net.kozon.selenium.example.test.framework.common.pageObjects.BasePage;
+import net.kozon.selenium.example.test.framework.common.utils.CustomWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

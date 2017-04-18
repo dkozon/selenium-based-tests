@@ -1,8 +1,8 @@
-package net.kozon.selenium.example.test.framework.utils;
+package net.kozon.selenium.example.test.framework.common.utils;
 
-import net.kozon.selenium.example.test.framework.pageObjects.MainGooglePage;
-import net.kozon.selenium.example.test.framework.pageObjects.googleLogin.LoginGooglePage;
-import net.kozon.selenium.example.test.framework.pageObjects.googleLogin.PasswordGooglePage;
+import net.kozon.selenium.example.test.framework.google.pageObjects.MainGooglePage;
+import net.kozon.selenium.example.test.framework.google.pageObjects.LoginGooglePage;
+import net.kozon.selenium.example.test.framework.google.pageObjects.PasswordGooglePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 

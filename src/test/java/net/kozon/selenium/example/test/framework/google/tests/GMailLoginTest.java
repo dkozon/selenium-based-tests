@@ -1,10 +1,11 @@
-package net.kozon.selenium.example.test.framework.tests;
+package net.kozon.selenium.example.test.framework.google.tests;
 
+import net.kozon.selenium.example.test.framework.common.tests.BaseTest;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import net.kozon.selenium.example.test.framework.utils.UrlProvider;
+import net.kozon.selenium.example.test.framework.common.utils.UrlProvider;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,6 +1,6 @@
-package net.kozon.selenium.example.test.framework.tests;
+package net.kozon.selenium.example.test.framework.common.tests;
 
-import net.kozon.selenium.example.test.framework.utils.PageObjectManager;
+import net.kozon.selenium.example.test.framework.common.utils.PageObjectManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -9,10 +9,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  */
 public class BaseTest {
 
-    WebDriver webDriver;
-    PageObjectManager manager;
+    protected WebDriver webDriver;
+    protected PageObjectManager manager;
 
-    BaseTest() {
+    public BaseTest() {
         System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
         webDriver = new FirefoxDriver();
         manager = new PageObjectManager(webDriver);
