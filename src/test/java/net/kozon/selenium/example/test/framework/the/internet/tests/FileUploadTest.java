@@ -7,6 +7,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.net.URISyntaxException;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -32,9 +34,14 @@ public class FileUploadTest extends BaseTest {
     }
 
     @Test
-    public void shouldUploadFile() {
-        manager.theInternetMainPage().loadPage(url);
-        assertThat(manager.theInternetMainPage().isLoaded()).isTrue();
-        manager.theInternetMainPage().clickUploadLink();
+    public void shouldUploadFile() throws URISyntaxException {
+        manager.getMainPage().loadPage(url);
+        assertThat(manager.getMainPage().isLoaded()).isTrue();
+        manager.getMainPage().clickUploadLink();
+        assertThat(manager.getFileUploadPage().isLoaded()).isTrue();
+        manager.getFileUploadPage()
+                .uploadFile("src/test/resources/test.html")
+                .clickUpload();
+        assertThat(manager.getFileUploadPage().isFileUploaded("test.html"));
     }
 }

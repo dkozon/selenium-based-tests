@@ -1,5 +1,6 @@
 package net.kozon.selenium.example.test.framework.common.pageObjects;
 
+import net.kozon.selenium.example.test.framework.common.utils.CustomWait;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -8,9 +9,11 @@ import org.openqa.selenium.WebDriver;
 public abstract class BasePage {
 
     public WebDriver webDriver;
+    protected CustomWait customWait;
 
     public BasePage(WebDriver webDriver){
         this.webDriver = webDriver;
+        customWait = new CustomWait(webDriver);
     }
 
     public abstract boolean isLoaded();

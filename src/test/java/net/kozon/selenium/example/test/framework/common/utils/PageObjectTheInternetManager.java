@@ -1,6 +1,7 @@
 package net.kozon.selenium.example.test.framework.common.utils;
 
-import net.kozon.selenium.example.test.framework.the.internet.pageObjects.TheInternetMainPage;
+import net.kozon.selenium.example.test.framework.the.internet.pageObjects.FileUploadPage;
+import net.kozon.selenium.example.test.framework.the.internet.pageObjects.MainPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -10,16 +11,24 @@ import org.openqa.selenium.support.PageFactory;
 public class PageObjectTheInternetManager {
 
     private final WebDriver webDriver;
-    private TheInternetMainPage theInternetMainPage;
+    private MainPage mainPage;
+    private FileUploadPage fileUploadPage;
 
     public PageObjectTheInternetManager(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
 
-    public TheInternetMainPage theInternetMainPage() {
-        if (theInternetMainPage == null) {
-            theInternetMainPage = PageFactory.initElements(webDriver, TheInternetMainPage.class);
+    public MainPage getMainPage() {
+        if (mainPage == null) {
+            mainPage = PageFactory.initElements(webDriver, MainPage.class);
         }
-        return theInternetMainPage;
+        return mainPage;
+    }
+
+    public FileUploadPage getFileUploadPage() {
+        if (fileUploadPage == null) {
+            fileUploadPage = PageFactory.initElements(webDriver, FileUploadPage.class);
+        }
+        return fileUploadPage;
     }
 }

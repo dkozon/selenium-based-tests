@@ -5,6 +5,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -49,6 +50,17 @@ public class CustomWait {
         FluentWait<WebDriver> wait = createWait(DEFAULT_TIMEOUT_IN_SEC);
         try {
             wait.until(ExpectedConditions.elementToBeClickable(element));
+            return true;
+        } catch (TimeoutException e) {
+            logger.error("Element not found!", e);
+            return false;
+        }
+    }
+
+    public boolean isElementPresented(final By by) {
+        FluentWait<WebDriver> wait = createWait(DEFAULT_TIMEOUT_IN_SEC);
+        try {
+            wait.until(ExpectedConditions.presenceOfElementLocated(by));
             return true;
         } catch (TimeoutException e) {
             logger.error("Element not found!", e);
