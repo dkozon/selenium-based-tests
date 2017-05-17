@@ -1,6 +1,7 @@
 package net.kozon.selenium.example.test.framework.google.tests;
 
 import net.kozon.selenium.example.test.framework.common.tests.BaseTest;
+import net.kozon.selenium.example.test.framework.common.utils.PageObjectGoogleManager;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -15,6 +16,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class GMailLoginTest extends BaseTest {
 
     private String url;
+    private PageObjectGoogleManager manager;
+
+    public GMailLoginTest(){
+        manager = new PageObjectGoogleManager(webDriver);
+    }
 
     @BeforeMethod
     private void startUp() {
@@ -27,7 +33,7 @@ public class GMailLoginTest extends BaseTest {
     }
 
     @Test(dataProvider = "loginGMailData")
-    public void shouldNotLoggedInTest(String login, String password) {
+    public void shouldLoggedInTest(String login, String password) {
         manager.mainPage()
                 .loadPage(url);
         assertThat(manager.mainPage().isLoaded()).isTrue();

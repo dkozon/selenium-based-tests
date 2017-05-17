@@ -9,14 +9,14 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by Dariusz_Kozon on 12-Jan-17.
  */
-public class PageObjectManager {
+public class PageObjectGoogleManager {
 
     private final WebDriver webDriver;
     private MainGooglePage mainGooglePage;
     private LoginGooglePage loginGooglePage;
     private PasswordGooglePage passwordGooglePage;
 
-    public PageObjectManager(WebDriver webDriver) {
+    public PageObjectGoogleManager(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
 
