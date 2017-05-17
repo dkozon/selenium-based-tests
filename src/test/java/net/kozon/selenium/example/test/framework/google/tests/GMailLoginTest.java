@@ -39,10 +39,9 @@ public class GMailLoginTest extends BaseTest {
                 .clickNextButton();
         assertThat(manager.passwordPage().isLoaded()).isTrue();
         assertThat(manager.passwordPage().getEmailDisplayed()).contains(login + "@gmail.com");
-        assertThat(manager.passwordPage().isStaySignedInCheckboxSelected()).isTrue();
         manager.passwordPage()
                 .enterPassword(password)
-                .signInButtonClick();
+                .nextButtonClick();
     }
 
     @DataProvider(name = "loginGMailData")

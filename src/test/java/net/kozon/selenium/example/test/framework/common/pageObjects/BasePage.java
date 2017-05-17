@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
  */
 public abstract class BasePage {
 
-    private WebDriver webDriver;
+    public WebDriver webDriver;
 
     public BasePage(WebDriver webDriver){
         this.webDriver = webDriver;

@@ -11,10 +11,10 @@ import org.openqa.selenium.support.FindBy;
  */
 public class LoginGooglePage extends BasePage {
 
-    @FindBy(xpath = ".//input[@id='Email']")
+    @FindBy(xpath = ".//input[@id='identifierId']")
     private WebElement emailField;
 
-    @FindBy(id = "next")
+    @FindBy(id = "identifierNext")
     private WebElement nextButton;
 
     private CustomWait customWait;
@@ -25,6 +25,7 @@ public class LoginGooglePage extends BasePage {
     }
 
     public LoginGooglePage enterMailAddress(String login) {
+        emailField.click();
         emailField.sendKeys(login);
         return this;
     }

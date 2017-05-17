@@ -1,6 +1,7 @@
 package net.kozon.selenium.example.test.framework.google.pageObjects;
 
 import net.kozon.selenium.example.test.framework.common.pageObjects.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,16 +12,13 @@ import net.kozon.selenium.example.test.framework.common.utils.CustomWait;
  */
 public class PasswordGooglePage extends BasePage {
 
-    @FindBy(id = "signIn")
-    private WebElement signInButton;
+    @FindBy(id = "passwordNext")
+    private WebElement passwordNextButton;
 
-    @FindBy(id = "Passwd")
+    @FindBy(id = "password")
     private WebElement passwordField;
 
-    @FindBy(id = "PersistentCookie")
-    private WebElement staySignedInCheckbox;
-
-    @FindBy(id = "email-display")
+    @FindBy(id = "profileIdentifier")
     private WebElement emailDisplayText;
 
     private CustomWait customWait;
@@ -30,26 +28,23 @@ public class PasswordGooglePage extends BasePage {
         customWait = new CustomWait(webDriver);
     }
 
-    public PasswordGooglePage signInButtonClick() {
-        signInButton.click();
+    public PasswordGooglePage nextButtonClick() {
+        passwordNextButton.click();
         return this;
     }
 
     public PasswordGooglePage enterPassword(String password) {
+        passwordField.click();
         passwordField.sendKeys(password);
         return this;
     }
 
     @Override
     public boolean isLoaded() {
-        return customWait.isElementPresent(signInButton);
+        return customWait.isElementPresent(passwordNextButton);
     }
 
     public String getEmailDisplayed() {
         return customWait.createFluentWait().until((WebDriver ignored) -> emailDisplayText.getText());
-    }
-
-    public boolean isStaySignedInCheckboxSelected() {
-        return staySignedInCheckbox.isSelected();
     }
 }
