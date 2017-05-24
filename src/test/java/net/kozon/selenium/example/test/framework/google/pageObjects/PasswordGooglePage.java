@@ -21,11 +21,8 @@ public class PasswordGooglePage extends BasePage {
     @FindBy(id = "profileIdentifier")
     private WebElement emailDisplayText;
 
-    private CustomWait customWait;
-
     public PasswordGooglePage(WebDriver webDriver) {
         super(webDriver);
-        customWait = new CustomWait(webDriver);
     }
 
     public PasswordGooglePage nextButtonClick() {

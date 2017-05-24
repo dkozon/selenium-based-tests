@@ -17,11 +17,8 @@ public class LoginGooglePage extends BasePage {
     @FindBy(id = "identifierNext")
     private WebElement nextButton;
 
-    private CustomWait customWait;
-
     public LoginGooglePage(WebDriver webDriver) {
         super(webDriver);
-        customWait = new CustomWait(webDriver);
     }
 
     public LoginGooglePage enterMailAddress(String login) {

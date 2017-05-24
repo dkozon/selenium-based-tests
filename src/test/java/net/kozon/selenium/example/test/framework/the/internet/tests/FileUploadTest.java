@@ -42,6 +42,6 @@ public class FileUploadTest extends BaseTest {
         manager.getFileUploadPage()
                 .uploadFile("src/test/resources/test.html")
                 .clickUpload();
-        assertThat(manager.getFileUploadPage().isFileUploaded("test.html"));
+        assertThat(manager.getFileUploadPage().isFileUploaded("test.html")).isTrue();
     }
 }

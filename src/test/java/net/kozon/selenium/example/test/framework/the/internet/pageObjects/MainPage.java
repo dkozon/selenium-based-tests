@@ -17,7 +17,10 @@ public class MainPage extends BasePage {
     private WebElement theInternetHeader;
 
     @FindBy(xpath = "//a[contains(text(), 'File Upload')]")
-    public WebElement fileUploadLink;
+    private WebElement fileUploadLink;
+
+    @FindBy(xpath = "//a[contains(text(), 'Drag and Drop')]")
+    private WebElement dragAndDropLink;
 
     public MainPage(WebDriver webDriver) {
         super(webDriver);
@@ -26,6 +29,11 @@ public class MainPage extends BasePage {
 
     public MainPage clickUploadLink() {
         fileUploadLink.click();
+        return this;
+    }
+
+    public MainPage clickDragAndDropLink() {
+        dragAndDropLink.click();
         return this;
     }
 

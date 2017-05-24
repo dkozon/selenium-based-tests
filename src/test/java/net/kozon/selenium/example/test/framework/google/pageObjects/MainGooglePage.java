@@ -14,11 +14,8 @@ public class MainGooglePage extends BasePage {
     @FindBy(xpath = ".//a[contains(text(), 'Sign in')]")
     private WebElement signInButton;
 
-    private CustomWait customWait;
-
     public MainGooglePage(WebDriver webDriver) {
         super(webDriver);
-        customWait = new CustomWait(webDriver);
     }
 
     public MainGooglePage signInButtonClick() {
