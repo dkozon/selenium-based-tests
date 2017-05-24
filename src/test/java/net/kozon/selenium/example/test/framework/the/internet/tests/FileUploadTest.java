@@ -7,6 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.lang.reflect.InvocationTargetException;
 import java.net.URISyntaxException;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,7 +20,7 @@ public class FileUploadTest extends BaseTest {
     private String url;
     private PageObjectTheInternetManager manager;
 
-    public FileUploadTest() {
+    public FileUploadTest() throws InvocationTargetException {
         manager = new PageObjectTheInternetManager(webDriver);
     }
 

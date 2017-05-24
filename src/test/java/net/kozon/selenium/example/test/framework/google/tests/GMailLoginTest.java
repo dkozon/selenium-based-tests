@@ -8,6 +8,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import net.kozon.selenium.example.test.framework.common.utils.UrlProvider;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -18,7 +20,7 @@ public class GMailLoginTest extends BaseTest {
     private String url;
     private PageObjectGoogleManager manager;
 
-    public GMailLoginTest(){
+    public GMailLoginTest() throws InvocationTargetException {
         manager = new PageObjectGoogleManager(webDriver);
     }
 
