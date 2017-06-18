@@ -20,7 +20,7 @@ public class GMailLoginTest extends BaseTest {
     private String url;
     private PageObjectGoogleManager manager;
 
-    public GMailLoginTest() throws InvocationTargetException {
+    public GMailLoginTest() {
         manager = new PageObjectGoogleManager(webDriver);
     }
 

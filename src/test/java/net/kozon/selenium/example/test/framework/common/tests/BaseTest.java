@@ -6,10 +6,15 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.reflect.InvocationTargetException;
-
 /**
  * Created by Dariusz Kozon on 26.02.2017.
+ *
+ * BaseTest is responsible for setting up running browser.
+ * Running with maven:
+ * for Firefox use -Ddriver=firefox
+ * for Chrome use -Ddriver=chrome
+ *
+ * If driver is not set then default configuration is Firefox (gecko driver).
  */
 public class BaseTest {
 
@@ -21,7 +26,7 @@ public class BaseTest {
         try {
             setDriver();
         } catch (NullPointerException e) {
-            logger.warn("Missing 'driver' property. Set driver to default" ,e);
+            logger.warn("Missing 'driver' property. Set driver to default", e);
             System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
             webDriver = new FirefoxDriver();
         } finally {

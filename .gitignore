@@ -34,3 +34,6 @@ buildNumber.properties
 modules.xml
 .idea/misc.xml
 *.ipr
+
+# Log
+logfile.log

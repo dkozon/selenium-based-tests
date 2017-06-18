@@ -20,7 +20,7 @@ public class FileUploadTest extends BaseTest {
     private String url;
     private PageObjectTheInternetManager manager;
 
-    public FileUploadTest() throws InvocationTargetException {
+    public FileUploadTest() {
         manager = new PageObjectTheInternetManager(webDriver);
     }
 

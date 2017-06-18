@@ -20,7 +20,7 @@ public class DragAndDropTest extends BaseTest {
     private String url;
     private PageObjectTheInternetManager manager;
 
-    public DragAndDropTest() throws InvocationTargetException {
+    public DragAndDropTest() {
         manager = new PageObjectTheInternetManager(webDriver);
     }
 
