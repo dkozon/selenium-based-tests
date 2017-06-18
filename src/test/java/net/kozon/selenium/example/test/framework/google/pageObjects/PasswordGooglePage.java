@@ -15,7 +15,7 @@ public class PasswordGooglePage extends BasePage {
     @FindBy(id = "passwordNext")
     private WebElement passwordNextButton;
 
-    @FindBy(id = "password")
+    @FindBy(name = "password")
     private WebElement passwordField;
 
     @FindBy(id = "profileIdentifier")
