@@ -44,7 +44,8 @@ public class GMailLoginTest extends BaseTest {
         assertThat(manager.loginPage().isLoaded()).isTrue();
         manager.loginPage()
                 .enterMailAddress(login)
-                .clickNextButton();
+                .alternateClickNextButton();
+                //.clickNextButton();
         assertThat(manager.passwordPage().isLoaded()).isTrue();
         assertThat(manager.passwordPage().getEmailDisplayed()).contains(login + "@gmail.com");
         manager.passwordPage()

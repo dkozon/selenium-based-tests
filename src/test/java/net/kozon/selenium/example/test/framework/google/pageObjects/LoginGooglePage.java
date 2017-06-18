@@ -2,6 +2,7 @@ package net.kozon.selenium.example.test.framework.google.pageObjects;
 
 import net.kozon.selenium.example.test.framework.common.pageObjects.BasePage;
 import net.kozon.selenium.example.test.framework.common.utils.CustomWait;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,6 +30,12 @@ public class LoginGooglePage extends BasePage {
 
     public LoginGooglePage clickNextButton() {
         nextButton.click();
+        return this;
+    }
+
+    public LoginGooglePage alternateClickNextButton() {
+        JavascriptExecutor js = (JavascriptExecutor) webDriver;
+        js.executeScript("arguments[0].click();", nextButton);
         return this;
     }
 
