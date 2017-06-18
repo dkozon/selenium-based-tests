@@ -34,7 +34,7 @@ public class DragAndDropTest extends BaseTest {
         webDriver.quit();
     }
 
-    // does not work [https://github.com/SeleniumHQ/selenium/issues/1365]
+    //TODO: does not work [https://github.com/SeleniumHQ/selenium/issues/1365]
     @Test (enabled = false)
     public void shouldDragBoxAAndDropInBoxBPlace() throws InterruptedException {
         manager.getMainPage().loadPage(url);
