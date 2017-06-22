@@ -1,10 +1,14 @@
 package net.kozon.selenium.example.test.framework.common.tests;
 
+import net.kozon.selenium.example.test.framework.common.utils.Configuration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.security.InvalidParameterException;
+import java.text.MessageFormat;
 
 /**
  * Created by Dariusz Kozon on 26.02.2017.
@@ -19,13 +23,14 @@ import org.slf4j.LoggerFactory;
 public class BaseTest {
 
     private static Logger logger = LoggerFactory.getLogger(BaseTest.class);
+    private static final String DRIVER = "driver";
 
     protected WebDriver webDriver;
 
     protected BaseTest() {
         try {
             setDriver();
-        } catch (NullPointerException e) {
+        } catch (InvalidParameterException e) {
             logger.warn("Missing 'driver' property. Set driver to default", e);
             System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
             webDriver = new FirefoxDriver();
@@ -34,11 +39,11 @@ public class BaseTest {
         }
     }
 
-    private void setDriver() throws NullPointerException {
-        if(System.getProperty("driver").equals("chrome")) {
+    private void setDriver() throws InvalidParameterException {
+        if(Configuration.getProperty(DRIVER).equals("chrome")) {
             System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
             webDriver = new ChromeDriver();
-        } else if (System.getProperty("driver").equals("firefox")) {
+        } else if (Configuration.getProperty(DRIVER).equals("firefox")) {
             System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
             webDriver = new FirefoxDriver();
         }

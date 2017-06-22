@@ -36,4 +36,4 @@ modules.xml
 *.ipr
 
 # Log
-logfile.log
+logfile.log*
