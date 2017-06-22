@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.security.InvalidParameterException;
-import java.text.MessageFormat;
 
 /**
  * Created by Dariusz Kozon on 26.02.2017.
