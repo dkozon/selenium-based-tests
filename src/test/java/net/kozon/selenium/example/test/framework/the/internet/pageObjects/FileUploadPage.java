@@ -1,6 +1,5 @@
 package net.kozon.selenium.example.test.framework.the.internet.pageObjects;
 
-import com.google.common.io.Resources;
 import net.kozon.selenium.example.test.framework.common.pageObjects.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 
 import java.io.File;
 import java.net.URISyntaxException;
-import java.net.URL;
 
 /**
  * Created by Dariusz_Kozon on 17-May-17.
@@ -36,17 +34,17 @@ public class FileUploadPage extends BasePage {
     }
 
     public FileUploadPage clickUpload() {
-        uploadButton.click();
+        customWait.clickElement(uploadButton);
         return this;
     }
 
     public boolean isFileUploaded(String fileName) {
         //example with element Changed in DOM after upload (element is not existing until DOM reload)
-        return customWait.isElementPresented(By.xpath(String.format(fileUploadConfirmation, fileName)));
+        return customWait.isElementPresent(By.xpath(String.format(fileUploadConfirmation, fileName)));
     }
 
     @Override
     public boolean isLoaded() {
-        return customWait.isElementPresent(fileUploadController);
+        return customWait.isElementVisible(fileUploadController);
     }
 }

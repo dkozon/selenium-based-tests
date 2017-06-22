@@ -39,6 +39,6 @@ public class MainPage extends BasePage {
 
     @Override
     public boolean isLoaded() {
-        return customWait.isElementPresent(theInternetHeader);
+        return customWait.isElementVisible(theInternetHeader);
     }
 }

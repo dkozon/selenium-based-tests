@@ -7,7 +7,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.lang.reflect.InvocationTargetException;
 import java.net.URISyntaxException;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,6 +18,9 @@ public class FileUploadTest extends BaseTest {
 
     private String url;
     private PageObjectTheInternetManager manager;
+
+    private static final String NAME_OF_FILE_FOR_UPLOAD = "test.html";
+    private static final String PATH_TO_RESOURCE_FOR_UPLOAD = String.format("src/test/resources/%s", NAME_OF_FILE_FOR_UPLOAD);
 
     public FileUploadTest() {
         manager = new PageObjectTheInternetManager(webDriver);
@@ -41,8 +43,8 @@ public class FileUploadTest extends BaseTest {
         manager.getMainPage().clickUploadLink();
         assertThat(manager.getFileUploadPage().isLoaded()).isTrue();
         manager.getFileUploadPage()
-                .uploadFile("src/test/resources/test.html")
+                .uploadFile(PATH_TO_RESOURCE_FOR_UPLOAD)
                 .clickUpload();
-        assertThat(manager.getFileUploadPage().isFileUploaded("test.html")).isTrue();
+        assertThat(manager.getFileUploadPage().isFileUploaded(NAME_OF_FILE_FOR_UPLOAD)).isTrue();
     }
 }

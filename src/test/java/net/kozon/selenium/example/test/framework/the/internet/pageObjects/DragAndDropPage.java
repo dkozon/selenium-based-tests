@@ -37,6 +37,6 @@ public class DragAndDropPage extends BasePage {
 
     @Override
     public boolean isLoaded() {
-        return customWait.isElementPresent(dragAndDropPageHeader);
+        return customWait.isElementVisible(dragAndDropPageHeader);
     }
 }

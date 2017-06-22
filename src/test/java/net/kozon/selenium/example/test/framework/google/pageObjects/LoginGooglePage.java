@@ -1,7 +1,6 @@
 package net.kozon.selenium.example.test.framework.google.pageObjects;
 
 import net.kozon.selenium.example.test.framework.common.pageObjects.BasePage;
-import net.kozon.selenium.example.test.framework.common.utils.CustomWait;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,17 +22,18 @@ public class LoginGooglePage extends BasePage {
     }
 
     public LoginGooglePage enterMailAddress(String login) {
-        emailField.click();
+        customWait.clickElement(emailField);
         emailField.sendKeys(login);
         return this;
     }
 
     public LoginGooglePage clickNextButton() {
-        nextButton.click();
+        customWait.clickElement(nextButton);
         return this;
     }
 
     public LoginGooglePage alternateClickNextButton() {
+        customWait.isElementVisible(nextButton);
         JavascriptExecutor js = (JavascriptExecutor) webDriver;
         js.executeScript("arguments[0].click();", nextButton);
         return this;
@@ -41,7 +41,7 @@ public class LoginGooglePage extends BasePage {
 
     @Override
     public boolean isLoaded() {
-        return customWait.isElementPresent(emailField) && customWait.isElementPresent(nextButton);
+        return customWait.isElementVisible(emailField) && customWait.isElementVisible(nextButton);
     }
 
 }
