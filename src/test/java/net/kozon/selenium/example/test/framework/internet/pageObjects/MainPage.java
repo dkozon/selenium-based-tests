@@ -1,4 +1,4 @@
-package net.kozon.selenium.example.test.framework.the.internet.pageObjects;
+package net.kozon.selenium.example.test.framework.internet.pageObjects;
 
 import net.kozon.selenium.example.test.framework.common.pageObjects.BasePage;
 import net.kozon.selenium.example.test.framework.common.utils.CustomWait;
@@ -13,7 +13,7 @@ public class MainPage extends BasePage {
 
     private CustomWait customWait;
 
-    @FindBy(xpath = "//h1[contains(text(), 'Welcome to the Internet')]")
+    @FindBy(xpath = "//h1[contains(text(), 'Welcome to the-internet')]")
     private WebElement theInternetHeader;
 
     @FindBy(xpath = "//a[contains(text(), 'File Upload')]")

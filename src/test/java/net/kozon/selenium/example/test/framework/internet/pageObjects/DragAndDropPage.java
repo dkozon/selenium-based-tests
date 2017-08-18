@@ -1,4 +1,4 @@
-package net.kozon.selenium.example.test.framework.the.internet.pageObjects;
+package net.kozon.selenium.example.test.framework.internet.pageObjects;
 
 import net.kozon.selenium.example.test.framework.common.pageObjects.BasePage;
 import org.openqa.selenium.WebDriver;

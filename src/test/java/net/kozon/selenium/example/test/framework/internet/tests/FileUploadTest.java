@@ -1,8 +1,9 @@
-package net.kozon.selenium.example.test.framework.the.internet.tests;
+package net.kozon.selenium.example.test.framework.internet.tests;
 
 import net.kozon.selenium.example.test.framework.common.tests.BaseTest;
 import net.kozon.selenium.example.test.framework.common.utils.PageObjectTheInternetManager;
 import net.kozon.selenium.example.test.framework.common.utils.UrlProvider;
+import org.assertj.core.api.Assertions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -39,12 +40,12 @@ public class FileUploadTest extends BaseTest {
     @Test
     public void shouldUploadFile() throws URISyntaxException {
         manager.getMainPage().loadPage(url);
-        assertThat(manager.getMainPage().isLoaded()).isTrue();
+        Assertions.assertThat(manager.getMainPage().isLoaded()).isTrue();
         manager.getMainPage().clickUploadLink();
-        assertThat(manager.getFileUploadPage().isLoaded()).isTrue();
+        Assertions.assertThat(manager.getFileUploadPage().isLoaded()).isTrue();
         manager.getFileUploadPage()
                 .uploadFile(PATH_TO_RESOURCE_FOR_UPLOAD)
                 .clickUpload();
-        assertThat(manager.getFileUploadPage().isFileUploaded(NAME_OF_FILE_FOR_UPLOAD)).isTrue();
+        Assertions.assertThat(manager.getFileUploadPage().isFileUploaded(NAME_OF_FILE_FOR_UPLOAD)).isTrue();
     }
 }

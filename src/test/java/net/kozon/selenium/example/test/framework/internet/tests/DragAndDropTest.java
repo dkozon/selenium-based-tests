@@ -1,4 +1,4 @@
-package net.kozon.selenium.example.test.framework.the.internet.tests;
+package net.kozon.selenium.example.test.framework.internet.tests;
 
 import net.kozon.selenium.example.test.framework.common.tests.BaseTest;
 import net.kozon.selenium.example.test.framework.common.utils.PageObjectTheInternetManager;
