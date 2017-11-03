@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by Dariusz_Kozon on 16-Jan-17.
  */
-public class PasswordGooglePage extends BasePage {
+public class PasswordGooglePage extends BasePage<PasswordGooglePage> {
 
     @FindBy(id = "passwordNext")
     private WebElement passwordNextButton;
@@ -19,19 +19,24 @@ public class PasswordGooglePage extends BasePage {
     @FindBy(id = "profileIdentifier")
     private WebElement emailDisplayText;
 
+    @Override
+    protected PasswordGooglePage getThis() {
+        return this;
+    }
+
     public PasswordGooglePage(WebDriver webDriver) {
         super(webDriver);
     }
 
     public PasswordGooglePage nextButtonClick() {
         customWait.clickElement(passwordNextButton, 10);
-        return this;
+        return getThis();
     }
 
     public PasswordGooglePage enterPassword(String password) {
         customWait.clickElement(passwordField, 10);
         passwordField.sendKeys(password);
-        return this;
+        return getThis();
     }
 
     @Override

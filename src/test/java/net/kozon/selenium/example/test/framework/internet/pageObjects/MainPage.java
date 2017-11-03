@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by Dariusz_Kozon on 18-Apr-17.
  */
-public class MainPage extends BasePage {
+public class MainPage extends BasePage<MainPage> {
 
     private CustomWait customWait;
 
@@ -22,6 +22,11 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//a[contains(text(), 'Drag and Drop')]")
     private WebElement dragAndDropLink;
 
+    @Override
+    protected MainPage getThis() {
+        return this;
+    }
+
     public MainPage(WebDriver webDriver) {
         super(webDriver);
         customWait = new CustomWait(webDriver);
@@ -29,12 +34,12 @@ public class MainPage extends BasePage {
 
     public MainPage clickUploadLink() {
         fileUploadLink.click();
-        return this;
+        return getThis();
     }
 
     public MainPage clickDragAndDropLink() {
         dragAndDropLink.click();
-        return this;
+        return getThis();
     }
 
     @Override

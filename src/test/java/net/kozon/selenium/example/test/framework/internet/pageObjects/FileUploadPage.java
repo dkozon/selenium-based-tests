@@ -2,6 +2,7 @@ package net.kozon.selenium.example.test.framework.internet.pageObjects;
 
 import net.kozon.selenium.example.test.framework.common.pageObjects.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,7 +13,12 @@ import java.net.URISyntaxException;
 /**
  * Created by Dariusz_Kozon on 17-May-17.
  */
-public class FileUploadPage extends BasePage {
+public class FileUploadPage extends BasePage<FileUploadPage> {
+
+    @Override
+    protected FileUploadPage getThis() {
+        return this;
+    }
 
     @FindBy (id = "file-upload")
     private WebElement fileUploadController;
@@ -30,12 +36,17 @@ public class FileUploadPage extends BasePage {
         File f = new File(filePath);
         System.out.println(f.getAbsoluteFile());
         fileUploadController.sendKeys(f.getAbsolutePath());
-        return this;
+        return getThis();
     }
 
     public FileUploadPage clickUpload() {
         customWait.clickElement(uploadButton);
-        return this;
+        return getThis();
+    }
+
+    public FileUploadPage makeUploadButtonScaled() {
+        makeElementScaled(uploadButton);
+        return getThis();
     }
 
     public boolean isFileUploaded(String fileName) {

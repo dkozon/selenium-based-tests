@@ -8,10 +8,15 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by Dariusz_Kozon on 16-Jan-17.
  */
-public class MainGooglePage extends BasePage {
+public class MainGooglePage extends BasePage<MainGooglePage> {
 
     @FindBy(xpath = ".//a[contains(text(), 'Sign in')]")
     private WebElement signInButton;
+
+    @Override
+    protected MainGooglePage getThis() {
+        return this;
+    }
 
     public MainGooglePage(WebDriver webDriver) {
         super(webDriver);
@@ -19,7 +24,7 @@ public class MainGooglePage extends BasePage {
 
     public MainGooglePage signInButtonClick() {
         customWait.clickElement(signInButton, 10);
-        return this;
+        return getThis();
     }
 
     @Override

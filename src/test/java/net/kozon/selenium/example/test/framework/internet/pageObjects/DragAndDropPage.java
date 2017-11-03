@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by Dariusz_Kozon on 19-May-17.
  */
-public class DragAndDropPage extends BasePage {
+public class DragAndDropPage extends BasePage<DragAndDropPage> {
 
     @FindBy (xpath = "//div[@id='column-a']")
     private WebElement boxA;
@@ -20,6 +20,11 @@ public class DragAndDropPage extends BasePage {
 
     @FindBy (xpath = "//h3[contains(text(), 'Drag and Drop')]")
     private WebElement dragAndDropPageHeader;
+
+    @Override
+    protected DragAndDropPage getThis() {
+        return this;
+    }
 
     public DragAndDropPage(WebDriver webDriver) {
         super(webDriver);
@@ -32,7 +37,7 @@ public class DragAndDropPage extends BasePage {
                 .release(boxB)
                 .build();
         dragAndDrop.perform();
-        return this;
+        return getThis();
     }
 
     @Override

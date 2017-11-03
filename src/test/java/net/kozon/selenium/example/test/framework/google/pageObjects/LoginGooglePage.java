@@ -9,13 +9,18 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by Dariusz_Kozon on 12-Jan-17.
  */
-public class LoginGooglePage extends BasePage {
+public class LoginGooglePage extends BasePage<LoginGooglePage> {
 
     @FindBy(xpath = ".//input[@id='identifierId']")
     private WebElement emailField;
 
     @FindBy(id = "identifierNext")
     private WebElement nextButton;
+
+    @Override
+    protected LoginGooglePage getThis() {
+        return this;
+    }
 
     public LoginGooglePage(WebDriver webDriver) {
         super(webDriver);
@@ -36,7 +41,7 @@ public class LoginGooglePage extends BasePage {
         customWait.isElementVisible(nextButton);
         JavascriptExecutor js = (JavascriptExecutor) webDriver;
         js.executeScript("arguments[0].click();", nextButton);
-        return this;
+        return getThis();
     }
 
     @Override

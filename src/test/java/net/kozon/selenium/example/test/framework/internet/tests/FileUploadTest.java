@@ -4,6 +4,7 @@ import net.kozon.selenium.example.test.framework.common.tests.BaseTest;
 import net.kozon.selenium.example.test.framework.common.utils.PageObjectTheInternetManager;
 import net.kozon.selenium.example.test.framework.common.utils.UrlProvider;
 import org.assertj.core.api.Assertions;
+import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -45,6 +46,7 @@ public class FileUploadTest extends BaseTest {
         Assertions.assertThat(manager.getFileUploadPage().isLoaded()).isTrue();
         manager.getFileUploadPage()
                 .uploadFile(PATH_TO_RESOURCE_FOR_UPLOAD)
+                .makeElementScaled(webDriver.findElement(By.id("file-submit")))
                 .clickUpload();
         Assertions.assertThat(manager.getFileUploadPage().isFileUploaded(NAME_OF_FILE_FOR_UPLOAD)).isTrue();
     }
