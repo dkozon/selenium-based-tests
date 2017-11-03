@@ -13,7 +13,7 @@ import java.net.URISyntaxException;
 /**
  * Created by Dariusz_Kozon on 17-May-17.
  */
-public class FileUploadPage extends BasePage<FileUploadPage> {
+public final class FileUploadPage extends BasePage<FileUploadPage> {
 
     @Override
     protected FileUploadPage getThis() {

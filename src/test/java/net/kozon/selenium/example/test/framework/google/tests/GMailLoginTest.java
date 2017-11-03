@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Created by Dariusz_Kozon on 12-Jan-17.
  */
-public class GMailLoginTest extends BaseTest {
+public final class GMailLoginTest extends BaseTest {
 
     private String url;
     private PageObjectGoogleManager manager;

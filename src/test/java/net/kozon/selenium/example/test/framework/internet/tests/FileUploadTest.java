@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Created by Dariusz_Kozon on 17-May-17.
  */
-public class FileUploadTest extends BaseTest {
+public final class FileUploadTest extends BaseTest {
 
     private String url;
     private PageObjectTheInternetManager manager;

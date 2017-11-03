@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by Dariusz_Kozon on 19-May-17.
  */
-public class DragAndDropPage extends BasePage<DragAndDropPage> {
+public final class DragAndDropPage extends BasePage<DragAndDropPage> {
 
     @FindBy (xpath = "//div[@id='column-a']")
     private WebElement boxA;

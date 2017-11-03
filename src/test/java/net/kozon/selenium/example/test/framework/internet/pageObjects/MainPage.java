@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by Dariusz_Kozon on 18-Apr-17.
  */
-public class MainPage extends BasePage<MainPage> {
+public final class MainPage extends BasePage<MainPage> {
 
     private CustomWait customWait;
 

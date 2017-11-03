@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by Dariusz_Kozon on 16-Jan-17.
  */
-public class PasswordGooglePage extends BasePage<PasswordGooglePage> {
+public final class PasswordGooglePage extends BasePage<PasswordGooglePage> {
 
     @FindBy(id = "passwordNext")
     private WebElement passwordNextButton;

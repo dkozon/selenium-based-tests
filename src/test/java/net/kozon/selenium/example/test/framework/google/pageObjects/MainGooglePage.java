@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by Dariusz_Kozon on 16-Jan-17.
  */
-public class MainGooglePage extends BasePage<MainGooglePage> {
+public final class MainGooglePage extends BasePage<MainGooglePage> {
 
     @FindBy(xpath = ".//a[contains(text(), 'Sign in')]")
     private WebElement signInButton;

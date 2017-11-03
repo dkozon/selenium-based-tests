@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by Dariusz_Kozon on 12-Jan-17.
  */
-public class LoginGooglePage extends BasePage<LoginGooglePage> {
+public final class LoginGooglePage extends BasePage<LoginGooglePage> {
 
     @FindBy(xpath = ".//input[@id='identifierId']")
     private WebElement emailField;

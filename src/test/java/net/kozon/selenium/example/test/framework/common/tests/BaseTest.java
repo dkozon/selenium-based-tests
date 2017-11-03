@@ -24,6 +24,7 @@ import java.security.InvalidParameterException;
  * for Firefox use -Ddriver=firefox
  * for Chrome use -Ddriver=chrome
  * for remote (establish server and node and then run) -Ddriver=remote
+ * for phantomjs -Ddriver=headless
  *
  * If driver is not set then default configuration is Firefox (gecko driver).
  */
@@ -40,11 +41,11 @@ public class BaseTest {
         try {
             setDriver();
         } catch (InvalidParameterException e) {
-            logger.warn("Missing 'driver' property. Set driver to default", e);
+            logger.warn("Missing 'driver' property. Set driver to default");
             System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
             webDriver = new FirefoxDriver();
         } finally {
-           webDriver.manage().window().maximize();
+            webDriver.manage().window().maximize();
         }
     }
 
