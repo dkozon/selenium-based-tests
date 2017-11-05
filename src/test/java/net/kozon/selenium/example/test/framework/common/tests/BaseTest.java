@@ -44,9 +44,10 @@ public class BaseTest {
     protected BaseTest() {
         try {
             setDriver();
-        } catch (InvalidParameterException e) {
+        }catch (InvalidParameterException e) {
             logger.warn("Missing 'driver' property. Set driver to default");
-            System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
+            Configuration.setProperty(DRIVER, "firefox");
+            Configuration.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
             webDriver = new FirefoxDriver();
         } finally {
             switch(Configuration.getProperty(DRIVER)){
@@ -62,17 +63,17 @@ public class BaseTest {
     private void setDriver() throws InvalidParameterException {
         switch (Configuration.getProperty(DRIVER)) {
             case "chrome":
-                System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+                Configuration.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
                 webDriver = new ChromeDriver();
                 break;
             case "firefox":
-                System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
+                Configuration.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
                 webDriver = new FirefoxDriver();
                 break;
             case "edge":
                 // For correct working of Edge driver zoom feature should be disabled or set up to 100% only
                 // http://www.winhelponline.com/blog/microsoft-edge-disable-zoom-reset-zoom-level-every-start/
-                System.setProperty("webdriver.edge.driver", "src/test/resources/MicrosoftWebDriver.exe");
+                Configuration.setProperty("webdriver.edge.driver", "src/test/resources/MicrosoftWebDriver.exe");
                 webDriver = new EdgeDriver();
                 break;
             case "remote":

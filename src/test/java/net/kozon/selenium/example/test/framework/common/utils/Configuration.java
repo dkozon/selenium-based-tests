@@ -15,4 +15,8 @@ public class Configuration {
         }
         return property;
     }
+
+    public static void setProperty(String key, String value) {
+        System.setProperty(key, value);
+    }
 }
