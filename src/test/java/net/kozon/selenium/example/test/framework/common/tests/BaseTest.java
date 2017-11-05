@@ -8,6 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +35,8 @@ public class BaseTest {
 
     private static Logger logger = LoggerFactory.getLogger(BaseTest.class);
     private static final String DRIVER = "driver";
-    private static final String REMOTE_HOST_URL = "http://localhost:4444/wd/hub";
+    private static String GRID_IP = "192.168.99.100";
+    private static final String REMOTE_HOST_URL = "http://%s:4444/wd/hub";
     private static DesiredCapabilities capabilities;
 
     protected WebDriver webDriver;
@@ -47,7 +49,13 @@ public class BaseTest {
             System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
             webDriver = new FirefoxDriver();
         } finally {
-            webDriver.manage().window().maximize();
+            switch(Configuration.getProperty(DRIVER)){
+                case "remote":
+                    break;
+                default:
+                    webDriver.manage().window().maximize();
+                    break;
+            }
         }
     }
 
@@ -70,9 +78,11 @@ public class BaseTest {
             case "remote":
                 capabilities = DesiredCapabilities.firefox();
                 try {
-                    webDriver = new RemoteWebDriver(new URL(REMOTE_HOST_URL), capabilities);
+                    RemoteWebDriver remoteWebDriver = new RemoteWebDriver(new URL(String.format(REMOTE_HOST_URL, GRID_IP)), capabilities);
+                    remoteWebDriver.setFileDetector(new LocalFileDetector());
+                    webDriver = remoteWebDriver;
                 } catch (MalformedURLException e) {
-                    logger.error("Missing RemoteWebDriver! ", e);
+                    logger.error("Missing RemoteWebDriver instance! ", e);
                 }
                 break;
             case "headless":
