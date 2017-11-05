@@ -33,6 +33,8 @@ public final class FileUploadPage extends BasePage<FileUploadPage> {
     }
 
     public FileUploadPage uploadFile(String filePath) throws URISyntaxException {
+        //uploading files using sendKeys() in edge does not work:
+        //https://stackoverflow.com/questions/38749050/edge-upload-file-control-using-selenium
         File f = new File(filePath);
         System.out.println(f.getAbsoluteFile());
         fileUploadController.sendKeys(f.getAbsolutePath());

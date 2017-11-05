@@ -3,6 +3,7 @@ package net.kozon.selenium.example.test.framework.common.tests;
 import net.kozon.selenium.example.test.framework.common.utils.Configuration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
@@ -14,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.InvalidParameterException;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -58,6 +60,12 @@ public class BaseTest {
             case "firefox":
                 System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
                 webDriver = new FirefoxDriver();
+                break;
+            case "edge":
+                // For correct working of Edge driver zoom feature should be disabled or set up to 100% only
+                // http://www.winhelponline.com/blog/microsoft-edge-disable-zoom-reset-zoom-level-every-start/
+                System.setProperty("webdriver.edge.driver", "src/test/resources/MicrosoftWebDriver.exe");
+                webDriver = new EdgeDriver();
                 break;
             case "remote":
                 capabilities = DesiredCapabilities.firefox();

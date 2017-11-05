@@ -33,7 +33,7 @@ public final class MainPage extends BasePage<MainPage> {
     }
 
     public MainPage clickUploadLink() {
-        fileUploadLink.click();
+        customWait.clickElement(fileUploadLink);
         return getThis();
     }
 
