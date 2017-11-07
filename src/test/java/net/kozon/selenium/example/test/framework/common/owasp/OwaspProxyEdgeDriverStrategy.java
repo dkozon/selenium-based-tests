@@ -1,6 +1,5 @@
 package net.kozon.selenium.example.test.framework.common.owasp;
 
-import com.google.gson.JsonObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeDriverService;
@@ -16,8 +15,7 @@ public class OwaspProxyEdgeDriverStrategy extends ProxyStrategy {
 
     @Override
     public WebDriver webDriver() throws IOException {
-        WebDriver webDriver = new EdgeDriver(owaspZAPService(), owaspZAPOptions());
-        return webDriver;
+        return new EdgeDriver(owaspZAPService(), owaspZAPOptions());
     }
 
     private EdgeOptions owaspZAPOptions() {

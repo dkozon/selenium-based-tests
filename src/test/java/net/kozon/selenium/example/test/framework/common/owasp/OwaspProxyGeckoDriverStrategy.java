@@ -1,6 +1,5 @@
 package net.kozon.selenium.example.test.framework.common.owasp;
 
-import com.google.gson.JsonObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -16,8 +15,7 @@ public class OwaspProxyGeckoDriverStrategy extends ProxyStrategy {
 
     @Override
     public WebDriver webDriver() throws IOException {
-        WebDriver webDriver = new FirefoxDriver(owaspZAPService(), owaspZAPOptions());
-        return webDriver;
+        return new FirefoxDriver(owaspZAPService(), owaspZAPOptions());
     }
 
     private FirefoxOptions owaspZAPOptions() {

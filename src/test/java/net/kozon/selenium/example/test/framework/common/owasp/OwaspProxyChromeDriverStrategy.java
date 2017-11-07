@@ -1,6 +1,5 @@
 package net.kozon.selenium.example.test.framework.common.owasp;
 
-import com.google.gson.JsonObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
@@ -16,8 +15,7 @@ public class OwaspProxyChromeDriverStrategy extends ProxyStrategy {
 
     @Override
     public WebDriver webDriver() throws IOException {
-        WebDriver webDriver = new ChromeDriver(owaspZAPService(), owaspZAPOptions());
-        return webDriver;
+        return new ChromeDriver(owaspZAPService(), owaspZAPOptions());
     }
 
     private ChromeOptions owaspZAPOptions() {
