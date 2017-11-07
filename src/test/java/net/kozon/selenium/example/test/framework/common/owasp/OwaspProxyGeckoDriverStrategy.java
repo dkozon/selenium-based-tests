@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Created by Dariusz_Kozon on 06.11.2017.
  */
-public class OwaspProxyGeckoDriverStrategy implements ProxyStrategy {
+public class OwaspProxyGeckoDriverStrategy extends ProxyStrategy {
 
     @Override
     public WebDriver webDriver() throws IOException {
@@ -21,15 +21,8 @@ public class OwaspProxyGeckoDriverStrategy implements ProxyStrategy {
     }
 
     private FirefoxOptions owaspZAPOptions() {
-        JsonObject json = new JsonObject();
-        json.addProperty("proxyType", "MANUAL");
-        json.addProperty("httpProxy", PROXY);
-        json.addProperty("httpProxyPort", PORT);
-        json.addProperty("sslProxy", PROXY);
-        json.addProperty("sslProxyPort", PORT);
-
         FirefoxOptions options = new FirefoxOptions();
-        options.setCapability("proxy", json);
+        options.setCapability("proxy", jsonConfiguration());
         return options;
     }
 

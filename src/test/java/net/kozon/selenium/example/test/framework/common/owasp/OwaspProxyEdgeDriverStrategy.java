@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Created by Dariusz_Kozon on 06.11.2017.
  */
-public class OwaspProxyEdgeDriverStrategy implements ProxyStrategy {
+public class OwaspProxyEdgeDriverStrategy extends ProxyStrategy {
 
     @Override
     public WebDriver webDriver() throws IOException {
@@ -21,15 +21,8 @@ public class OwaspProxyEdgeDriverStrategy implements ProxyStrategy {
     }
 
     private EdgeOptions owaspZAPOptions() {
-        JsonObject json = new JsonObject();
-        json.addProperty("proxyType", "MANUAL");
-        json.addProperty("httpProxy", PROXY);
-        json.addProperty("httpProxyPort", PORT);
-        json.addProperty("sslProxy", PROXY);
-        json.addProperty("sslProxyPort", PORT);
-
         EdgeOptions options = new EdgeOptions();
-        options.setCapability("proxy", json);
+        options.setCapability("proxy", jsonConfiguration());
         return options;
     }
 

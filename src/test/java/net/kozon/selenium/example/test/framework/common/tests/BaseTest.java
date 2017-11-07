@@ -99,6 +99,12 @@ public class BaseTest {
             case "firefoxZAP":
                 webDriver = context.setProxyStrategy(proxy.getOwaspProxyGeckoDriverStrategy()).webDriver();
                 break;
+            case "chromeZAP":
+                webDriver = context.setProxyStrategy(proxy.getOwaspProxyChromeDriverStrategy()).webDriver();
+                break;
+            case "edgeZAP":
+                webDriver = context.setProxyStrategy(proxy.getOwaspProxyEdgeDriverStrategy()).webDriver();
+                break;
         }
     }
 }

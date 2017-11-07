@@ -5,6 +5,9 @@ import java.text.MessageFormat;
 
 /**
  * Created by Dariusz Kozon on 22.06.2017.
+ *
+ * Dedicated Configuration to cover nullPointerExceptions for missing Property
+ *
  */
 public class Configuration {
 
