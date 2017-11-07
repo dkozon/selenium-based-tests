@@ -1,10 +1,6 @@
 package net.kozon.selenium.example.test.framework.common.owasp;
 
-import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriver.Options;
-import org.openqa.selenium.remote.service.DriverService;
-import org.openqa.selenium.safari.SafariDriverService;
 
 import java.io.IOException;
 

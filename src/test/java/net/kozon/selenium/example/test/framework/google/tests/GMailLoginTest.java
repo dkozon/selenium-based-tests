@@ -5,8 +5,6 @@ import net.kozon.selenium.example.test.framework.common.utils.PageObjectGoogleMa
 import org.testng.annotations.*;
 import net.kozon.selenium.example.test.framework.common.utils.UrlProvider;
 
-import java.lang.reflect.InvocationTargetException;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**

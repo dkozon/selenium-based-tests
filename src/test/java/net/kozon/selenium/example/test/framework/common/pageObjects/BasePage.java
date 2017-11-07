@@ -1,7 +1,6 @@
 package net.kozon.selenium.example.test.framework.common.pageObjects;
 
 import net.kozon.selenium.example.test.framework.common.utils.CustomWait;
-import net.kozon.selenium.example.test.framework.internet.pageObjects.FileUploadPage;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

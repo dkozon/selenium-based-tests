@@ -20,7 +20,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.InvalidParameterException;
 
-
 /**
  * Created by Dariusz Kozon on 26.02.2017.
  *
