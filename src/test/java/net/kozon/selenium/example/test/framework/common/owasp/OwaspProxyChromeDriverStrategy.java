@@ -15,16 +15,16 @@ public class OwaspProxyChromeDriverStrategy extends ProxyStrategy {
 
     @Override
     public WebDriver webDriver() throws IOException {
-        return new ChromeDriver(owaspZAPService(), owaspZAPOptions());
+        return new ChromeDriver(owaspZAProxyService(), owaspZAProxyOptions());
     }
 
-    private ChromeOptions owaspZAPOptions() {
+    private ChromeOptions owaspZAProxyOptions() {
         ChromeOptions options = new ChromeOptions();
         options.setCapability("proxy", jsonConfiguration());
         return options;
     }
 
-    private ChromeDriverService owaspZAPService() throws IOException {
+    private ChromeDriverService owaspZAProxyService() throws IOException {
         ChromeDriverService service = new ChromeDriverService.Builder()
                 .usingDriverExecutable(new File("src/test/resources/chromedriver.exe"))
                 .usingAnyFreePort()
