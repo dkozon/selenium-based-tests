@@ -29,7 +29,7 @@ import java.security.InvalidParameterException;
  * for Chrome use -Ddriver=chrome
  * for remote (establish server and node and then run) -Ddriver=remote
  * for phantomjs -Ddriver=headless
- * for Owasp ZAP proxy -Ddriver=>>browserName<<ZAP
+ * for Owasp ZAP proxy -Ddriver=>browserNameZAP in example -Ddriver=firefoxZAP
  *
  * If driver is not set then default configuration is Firefox (gecko driver).
  */
@@ -96,8 +96,14 @@ public class BaseTest {
                 capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,"src/test/resources/phantomjs.exe");
                 webDriver = new PhantomJSDriver(capabilities);
                 break;
+            case "chromeZAP":
+                webDriver = context.setProxyStrategy(proxy.getOwaspProxyChromeDriverStrategy()).webDriver();
+                break;
             case "firefoxZAP":
                 webDriver = context.setProxyStrategy(proxy.getOwaspProxyGeckoDriverStrategy()).webDriver();
+                break;
+            case "edgeZAP":
+                webDriver = context.setProxyStrategy(proxy.getOwaspProxyEdgeDriverStrategy()).webDriver();
                 break;
         }
     }

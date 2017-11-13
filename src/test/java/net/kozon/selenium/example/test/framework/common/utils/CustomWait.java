@@ -15,6 +15,9 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
  * Created by Dariusz_Kozon on 16-Jan-17.
+ *
+ * Set of methods for interacting with elements (contains explicit timeouts).
+ *
  */
 public class CustomWait {
 

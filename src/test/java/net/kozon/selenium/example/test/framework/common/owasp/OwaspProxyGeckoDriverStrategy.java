@@ -1,6 +1,5 @@
 package net.kozon.selenium.example.test.framework.common.owasp;
 
-import com.google.gson.JsonObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -12,24 +11,16 @@ import java.io.IOException;
 /**
  * Created by Dariusz_Kozon on 06.11.2017.
  */
-public class OwaspProxyGeckoDriverStrategy implements ProxyStrategy {
+public class OwaspProxyGeckoDriverStrategy extends ProxyStrategy {
 
     @Override
     public WebDriver webDriver() throws IOException {
-        WebDriver webDriver = new FirefoxDriver(owaspZAPService(), owaspZAPOptions());
-        return webDriver;
+        return new FirefoxDriver(owaspZAPService(), owaspZAPOptions());
     }
 
     private FirefoxOptions owaspZAPOptions() {
-        JsonObject json = new JsonObject();
-        json.addProperty("proxyType", "MANUAL");
-        json.addProperty("httpProxy", PROXY);
-        json.addProperty("httpProxyPort", PORT);
-        json.addProperty("sslProxy", PROXY);
-        json.addProperty("sslProxyPort", PORT);
-
         FirefoxOptions options = new FirefoxOptions();
-        options.setCapability("proxy", json);
+        options.setCapability("proxy", jsonConfiguration());
         return options;
     }
 
