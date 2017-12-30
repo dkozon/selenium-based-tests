@@ -37,7 +37,7 @@ public class BaseTest {
 
     private static Logger logger = LoggerFactory.getLogger(BaseTest.class);
     private static final String DRIVER = "driver";
-    private static String GRID_IP = "192.168.99.100";
+    private static String GRID_IP = "192.168.99.100"; //default docker IP address
     private static final String REMOTE_HOST_URL = "http://%s:4444/wd/hub";
     private static DesiredCapabilities capabilities;
     private static ProxyStrategyFactory proxy = new ProxyStrategyFactory();
@@ -51,7 +51,7 @@ public class BaseTest {
         }catch (InvalidParameterException | IOException e){
             logger.warn("Missing 'driver' property. Set driver to default");
             Configuration.setProperty(DRIVER, "firefox");
-            Configuration.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
+            Configuration.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver0191.exe");
             webDriver = new FirefoxDriver();
         }
         finally {
@@ -68,11 +68,11 @@ public class BaseTest {
     private void setDriver() throws InvalidParameterException, IOException {
         switch (Configuration.getProperty(DRIVER)) {
             case "chrome":
-                Configuration.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+                Configuration.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver234.exe");
                 webDriver = new ChromeDriver();
                 break;
             case "firefox":
-                Configuration.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
+                Configuration.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver0191.exe");
                 webDriver = new FirefoxDriver();
                 break;
             case "edge":

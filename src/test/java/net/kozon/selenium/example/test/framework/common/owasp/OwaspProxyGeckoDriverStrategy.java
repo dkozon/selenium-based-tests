@@ -26,7 +26,7 @@ public class OwaspProxyGeckoDriverStrategy extends ProxyStrategy {
 
     private GeckoDriverService owaspZAPService() throws IOException {
         GeckoDriverService service = new GeckoDriverService.Builder()
-                .usingDriverExecutable(new File("src/test/resources/geckodriver.exe"))
+                .usingDriverExecutable(new File("src/test/resources/geckodriver0191.exe"))
                 .usingAnyFreePort()
                 .usingAnyFreePort()
                 .build();

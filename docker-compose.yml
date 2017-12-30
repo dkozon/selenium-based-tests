@@ -1,10 +1,10 @@
 seleniumhub:
-  image: selenium/hub:3.7.0
+  image: selenium/hub:3.8.1
   ports:
     - 4444:4444
 
 firefoxnode:
-  image: selenium/node-firefox:3.7.0
+  image: selenium/node-firefox:3.8.1
   environment:
     SCREEN_WIDTH: 2880
     SCREEN_HEIGHT: 1800
@@ -15,7 +15,7 @@ firefoxnode:
 
 
 chromenode:
-  image: selenium/node-chrome:3.7.0
+  image: selenium/node-chrome:3.8.1
   environment:
     SCREEN_WIDTH: 2880
     SCREEN_HEIGHT: 1800

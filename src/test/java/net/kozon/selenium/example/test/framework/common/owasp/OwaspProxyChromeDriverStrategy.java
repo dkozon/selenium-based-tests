@@ -26,7 +26,7 @@ public class OwaspProxyChromeDriverStrategy extends ProxyStrategy {
 
     private ChromeDriverService owaspZAProxyService() throws IOException {
         ChromeDriverService service = new ChromeDriverService.Builder()
-                .usingDriverExecutable(new File("src/test/resources/chromedriver.exe"))
+                .usingDriverExecutable(new File("src/test/resources/chromedriver234.exe"))
                 .usingAnyFreePort()
                 .usingAnyFreePort()
                 .build();
