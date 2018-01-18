@@ -20,7 +20,7 @@ public class OwaspProxyChromeDriverStrategy extends ProxyStrategy {
 
     private ChromeOptions owaspZAProxyOptions() {
         ChromeOptions options = new ChromeOptions();
-        options.setCapability("proxy", jsonConfiguration());
+        options.setProxy(proxyConfig());
         return options;
     }
 

@@ -20,7 +20,7 @@ public class OwaspProxyEdgeDriverStrategy extends ProxyStrategy {
 
     private EdgeOptions owaspZAPOptions() {
         EdgeOptions options = new EdgeOptions();
-        options.setCapability("proxy", jsonConfiguration());
+        options.setProxy(proxyConfig());
         return options;
     }
 
