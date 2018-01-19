@@ -1,6 +1,6 @@
 # selenium-based-tests
 
-Project purpouse:
+Project purpose:
 
 *Training project for teaching practical side of test automation using Java 1.8 and Selenium WebDriver 3.*
 
