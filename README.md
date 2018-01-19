@@ -16,3 +16,10 @@ Project purpouse:
 - wait a while to establish containers
 - then you can run tests against grid using IP address of the docker
 - to stop docker use docker-compose stop (for process in the background) or ctrl+c
+
+# OWASP ZAP proxy
+- install OWASP ZAP
+- run it with default proxy port on 8080
+- while running tests from console set parameter -Ddriver=>>browserName<<ZAP for example -Ddriver=firefoxZAP
+
+For more supported -Ddriver parameter values look onto BaseTest
