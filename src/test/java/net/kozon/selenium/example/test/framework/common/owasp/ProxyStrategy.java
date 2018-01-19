@@ -11,7 +11,7 @@ import java.io.IOException;
 abstract class ProxyStrategy {
 
     private static String HTTP_PROXY = "localhost:8080";
-    private static String SSL_PROXY = "localhost:443";
+    private static String SSL_PROXY = "localhost:8080";
     abstract WebDriver webDriver() throws IOException;
 
     Proxy proxyConfig() {
