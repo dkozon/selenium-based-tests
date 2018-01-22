@@ -1,4 +1,4 @@
-# selenium-based-tests
+## Java Selenium Training project a.k.a selenium-based-tests
 
 Project purpose:
 
@@ -8,18 +8,38 @@ Project purpose:
 
 **Tests and framework is living product and will be extended frequent in the time.**
 
+### Requirements
 
-# Docker configuration for Grid
-- run Docker Terminal
-- go to project folder and see docker-compose.yml - there is configuration of the containers for hub and 2 nodes (FF and Chrome)
-- to run containers use docker-compose up
-- wait a while to establish containers
-- then you can run tests against grid using IP address of the docker
-- to stop docker use docker-compose stop (for process in the background) or ctrl+c
+Currently selenium-based-tests is supporting examples of tests running against (all windows instances):
+- Firefox 57.0.4 (geckodriver 0.19.1)
+- Chrome  63.0.3239.132 (chromedriver 2.34)
+- Edge (Microsoft WebDriver for windows 10 compilation 16299)
 
-# OWASP ZAP proxy
-- install OWASP ZAP
-- run it with default proxy port on 8080
-- while running tests from console set parameter -Ddriver=>>browserName<<ZAP for example -Ddriver=firefoxZAP
+For running against other platforms there is need to download and change drivers for executing tests in BaseTest.java)
+
+
+### Additional configuration
+#### Docker configuration for Grid
+
+Sometimes tests needs to be run through Selenium Grid. For setting this up the simplest way is to use Docker.
+For basic configuration run against Docker Selenium Grid you need to follow below instruction:
+
+- Run Docker Terminal installed on your environment
+- Go to project folder and see *docker-compose.yml* - there is stored configuration of the containers for **hub** and **2 nodes** (Firefox and Chrome)
+- For running containers use *docker-compose up*
+- Wait a while for automation establishing of containers
+- Then you can run tests against grid using IP address of the docker
+- For stopping docker use *docker-compose stop* (for process in the background) or combination of keys *ctrl+c*
+
+#### OWASP ZAP proxy
+
+This feature is dedicated for running tests through OWASP ZAP for basic 
+scanning of the application for basic vulnerabilities in tested application.
+
+For establishing connection with proxy you need to follow next steps:
+
+- Run OWASP ZAP installed on your environment which will be proxy for time of the tests running
+- Run it with default proxy port on 8080 (can be changed to other port)
+- While running tests from console set parameter -Ddriver=>>browserName<<ZAP for example -Ddriver=firefoxZAP
 
 For more supported -Ddriver parameter values look onto BaseTest
