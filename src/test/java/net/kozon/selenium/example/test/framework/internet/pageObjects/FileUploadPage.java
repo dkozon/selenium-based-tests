@@ -1,18 +1,22 @@
 package net.kozon.selenium.example.test.framework.internet.pageObjects;
 
 import net.kozon.selenium.example.test.framework.common.pageObjects.BasePage;
+import net.kozon.selenium.example.test.framework.common.utils.CustomWait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.net.URISyntaxException;
 
 /**
  * Created by Dariusz_Kozon on 17-May-17.
  */
 public final class FileUploadPage extends BasePage<FileUploadPage> {
+
+    private static Logger logger = LoggerFactory.getLogger(CustomWait.class);
 
     @Override
     protected FileUploadPage getThis() {
@@ -31,11 +35,11 @@ public final class FileUploadPage extends BasePage<FileUploadPage> {
         super(webDriver);
     }
 
-    public FileUploadPage uploadFile(String filePath) throws URISyntaxException {
+    public FileUploadPage uploadFile(String filePath) {
         //uploading files using sendKeys() in edge does not work:
         //https://stackoverflow.com/questions/38749050/edge-upload-file-control-using-selenium
         File f = new File(filePath);
-        System.out.println(f.getAbsoluteFile());
+        logger.info(f.getAbsoluteFile().toString());
         fileUploadController.sendKeys(f.getAbsolutePath());
         return getThis();
     }
