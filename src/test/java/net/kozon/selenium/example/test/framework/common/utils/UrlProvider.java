@@ -5,7 +5,8 @@ package net.kozon.selenium.example.test.framework.common.utils;
  */
 public enum UrlProvider {
     GOOGLE_MAIN("https://www.google.com/en"),
-    THE_INTERNET("https://the-internet.herokuapp.com/");
+    THE_INTERNET("https://the-internet.herokuapp.com/"),
+    DOCKER_INTERNET("http://localhost:5000");
 
     private final String baseUrl;
 

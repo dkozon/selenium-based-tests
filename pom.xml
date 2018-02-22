@@ -51,5 +51,11 @@
             <artifactId>phantomjsdriver</artifactId>
             <version>1.4.3</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.spotify/docker-client -->
+        <dependency>
+            <groupId>com.spotify</groupId>
+            <artifactId>docker-client</artifactId>
+            <version>8.11.1</version>
+        </dependency>
     </dependencies>
 </project>

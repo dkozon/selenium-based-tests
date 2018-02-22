@@ -1,5 +1,8 @@
 package net.kozon.selenium.example.test.framework.internet.tests;
 
+import com.spotify.docker.client.exceptions.DockerCertificateException;
+import com.spotify.docker.client.exceptions.DockerException;
+import net.kozon.selenium.example.test.framework.common.docker.EnvironmentOnDocker;
 import net.kozon.selenium.example.test.framework.common.tests.BaseTest;
 import net.kozon.selenium.example.test.framework.common.utils.PageObjectTheInternetManager;
 import net.kozon.selenium.example.test.framework.common.utils.UrlProvider;
@@ -14,23 +17,28 @@ import org.testng.annotations.Test;
 public final class FileUploadTest extends BaseTest {
 
     private String url;
+    private String dockerId;
     private PageObjectTheInternetManager manager;
+    private EnvironmentOnDocker environmentOnDocker;
 
     private static final String NAME_OF_FILE_FOR_UPLOAD = "test.html";
     private static final String PATH_TO_RESOURCE_FOR_UPLOAD = String.format("src/test/resources/%s", NAME_OF_FILE_FOR_UPLOAD);
 
     public FileUploadTest() {
         manager = new PageObjectTheInternetManager(webDriver);
+        environmentOnDocker = new EnvironmentOnDocker();
     }
 
     @BeforeMethod
-    private void startUp() {
-        url = UrlProvider.THE_INTERNET.getUrl();
+    private void startUp() throws InterruptedException, DockerCertificateException, DockerException {
+        dockerId = environmentOnDocker.startDockerClient();
+        url = UrlProvider.DOCKER_INTERNET.getUrl();
     }
 
     @AfterMethod
-    private void tearDown() {
+    private void tearDown() throws DockerException, InterruptedException {
         webDriver.quit();
+        environmentOnDocker.stopAndRemoveDockerClient(dockerId);
     }
 
     @Test
