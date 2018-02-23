@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 public final class FileUploadTest extends BaseTest {
 
     private String url;
-    private String dockerId;
+    private String containerId;
     private PageObjectTheInternetManager manager;
     private EnvironmentOnDocker environmentOnDocker;
 
@@ -31,14 +31,14 @@ public final class FileUploadTest extends BaseTest {
 
     @BeforeMethod
     private void startUp() throws InterruptedException, DockerCertificateException, DockerException {
-        dockerId = environmentOnDocker.startDockerClient();
+        containerId = environmentOnDocker.startDockerClient();
         url = UrlProvider.DOCKER_INTERNET.getUrl();
     }
 
     @AfterMethod
-    private void tearDown() throws DockerException, InterruptedException {
+    private void tearDown() {
         webDriver.quit();
-        environmentOnDocker.stopAndRemoveDockerClient(dockerId);
+        Assertions.assertThat(environmentOnDocker.stopAndRemoveDockerClient(containerId)).isTrue();
     }
 
     @Test

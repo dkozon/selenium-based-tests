@@ -1,6 +1,5 @@
 package net.kozon.selenium.example.test.framework.common.docker;
 
-
 import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerClient;
 import com.spotify.docker.client.exceptions.DockerCertificateException;
@@ -9,6 +8,8 @@ import com.spotify.docker.client.messages.ContainerConfig;
 import com.spotify.docker.client.messages.ContainerCreation;
 import com.spotify.docker.client.messages.HostConfig;
 import com.spotify.docker.client.messages.PortBinding;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,11 +21,11 @@ public class EnvironmentOnDocker {
 
     private static DockerClient dockerClient;
 
+    private static Logger logger = LoggerFactory.getLogger(EnvironmentOnDocker.class);
     private static final String DOCKER_IMAGE_OF_APP = "gprestes/the-internet";
 
     public final String startDockerClient() throws InterruptedException, DockerException, DockerCertificateException {
         dockerClient = DefaultDockerClient.fromEnv().build();
-
         dockerClient.pull(DOCKER_IMAGE_OF_APP);
 
         String[] ports = {"5000"};
@@ -54,8 +55,14 @@ public class EnvironmentOnDocker {
         return id;
     }
 
-    public final void stopAndRemoveDockerClient(String id) throws InterruptedException, DockerException {
-        dockerClient.stopContainer(id, 5);
-        dockerClient.removeContainer(id);
+    public final boolean stopAndRemoveDockerClient(String containerId) {
+        try {
+            dockerClient.stopContainer(containerId, 5);
+            dockerClient.removeContainer(containerId);
+            return true;
+        } catch (DockerException | InterruptedException e) {
+            logger.error("Problem with closing or removing container!", e);
+            return false;
+        }
     }
 }
