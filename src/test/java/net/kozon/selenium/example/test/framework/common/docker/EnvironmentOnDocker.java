@@ -9,6 +9,8 @@ import com.spotify.docker.client.messages.ContainerConfig;
 import com.spotify.docker.client.messages.ContainerCreation;
 import com.spotify.docker.client.messages.HostConfig;
 import com.spotify.docker.client.messages.PortBinding;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,6 +19,9 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class EnvironmentOnDocker {
+
+
+    private static Logger logger = LoggerFactory.getLogger(EnvironmentOnDocker.class);
 
     private static DockerClient dockerClient;
 
@@ -54,8 +59,12 @@ public class EnvironmentOnDocker {
         return id;
     }
 
-    public final void stopAndRemoveDockerClient(String id) throws InterruptedException, DockerException {
-        dockerClient.stopContainer(id, 5);
-        dockerClient.removeContainer(id);
+    public final void stopAndRemoveDockerClient(String id) {
+        try {
+            dockerClient.stopContainer(id, 5);
+            dockerClient.removeContainer(id);
+        } catch (DockerException | InterruptedException e) {
+            logger.error("Container has not been stopped or removed!", e);
+        }
     }
 }
