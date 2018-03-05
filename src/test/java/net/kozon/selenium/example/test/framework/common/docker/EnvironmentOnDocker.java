@@ -1,5 +1,6 @@
 package net.kozon.selenium.example.test.framework.common.docker;
 
+
 import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerClient;
 import com.spotify.docker.client.exceptions.DockerCertificateException;
@@ -19,13 +20,16 @@ import java.util.concurrent.TimeUnit;
 
 public class EnvironmentOnDocker {
 
-    private static DockerClient dockerClient;
 
     private static Logger logger = LoggerFactory.getLogger(EnvironmentOnDocker.class);
+
+    private static DockerClient dockerClient;
+
     private static final String DOCKER_IMAGE_OF_APP = "gprestes/the-internet";
 
     public final String startDockerClient() throws InterruptedException, DockerException, DockerCertificateException {
         dockerClient = DefaultDockerClient.fromEnv().build();
+
         dockerClient.pull(DOCKER_IMAGE_OF_APP);
 
         String[] ports = {"5000"};
