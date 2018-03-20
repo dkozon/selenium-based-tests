@@ -1,4 +1,4 @@
-package net.kozon.selenium.example.test.framework.common.pageObjects;
+package net.kozon.selenium.example.test.framework.common.pages;
 
 import net.kozon.selenium.example.test.framework.common.utils.CustomWait;
 import org.openqa.selenium.JavascriptExecutor;

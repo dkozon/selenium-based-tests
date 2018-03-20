@@ -1,6 +1,6 @@
-package net.kozon.selenium.example.test.framework.google.pageObjects;
+package net.kozon.selenium.example.test.framework.google.pages;
 
-import net.kozon.selenium.example.test.framework.common.pageObjects.BasePage;
+import net.kozon.selenium.example.test.framework.common.pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

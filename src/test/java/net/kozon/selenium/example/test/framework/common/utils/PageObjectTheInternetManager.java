@@ -1,8 +1,8 @@
 package net.kozon.selenium.example.test.framework.common.utils;
 
-import net.kozon.selenium.example.test.framework.internet.pageObjects.DragAndDropPage;
-import net.kozon.selenium.example.test.framework.internet.pageObjects.FileUploadPage;
-import net.kozon.selenium.example.test.framework.internet.pageObjects.MainPage;
+import net.kozon.selenium.example.test.framework.internet.pages.DragAndDropPage;
+import net.kozon.selenium.example.test.framework.internet.pages.FileUploadPage;
+import net.kozon.selenium.example.test.framework.internet.pages.MainPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
