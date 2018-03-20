@@ -1,5 +1,6 @@
 package net.kozon.selenium.example.test.framework.common.owasp;
 
+import net.kozon.selenium.example.test.framework.common.utils.Configuration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
@@ -26,7 +27,7 @@ public class OwaspProxyChromeDriverStrategy extends ProxyStrategy {
 
     private ChromeDriverService owaspZAProxyService() throws IOException {
         ChromeDriverService service = new ChromeDriverService.Builder()
-                .usingDriverExecutable(new File("src/test/resources/chromedriver234.exe"))
+                .usingDriverExecutable(new File(Configuration.getPropertyFromFile("chromeDriver")))
                 .usingAnyFreePort()
                 .usingAnyFreePort()
                 .build();

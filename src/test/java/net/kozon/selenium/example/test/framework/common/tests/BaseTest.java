@@ -36,12 +36,11 @@ import java.security.InvalidParameterException;
 public class BaseTest {
 
     private static Logger logger = LoggerFactory.getLogger(BaseTest.class);
-    private static final String DRIVER = "driver";
-    private static String GRID_IP = "192.168.99.100"; //default docker IP address
-    private static final String REMOTE_HOST_URL = "http://%s:4444/wd/hub";
-    private static DesiredCapabilities capabilities;
     private static ProxyStrategyFactory proxy = new ProxyStrategyFactory();
     private static WebDriverContext context = new WebDriverContext();
+
+    private static final String DRIVER = "driver";
+    private static final String REMOTE_HOST_URL = Configuration.getPropertyFromFile("remoteHostURL");
 
     protected WebDriver webDriver;
 
@@ -51,7 +50,7 @@ public class BaseTest {
         }catch (InvalidParameterException | IOException e){
             logger.warn("Missing 'driver' property. Set driver to default");
             Configuration.setProperty(DRIVER, "firefox");
-            Configuration.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver0191.exe");
+            Configuration.setProperty("webdriver.gecko.driver", Configuration.getPropertyFromFile("geckoDriver"));
             webDriver = new FirefoxDriver();
         }
         finally {
@@ -68,23 +67,23 @@ public class BaseTest {
     private void setDriver() throws InvalidParameterException, IOException {
         switch (Configuration.getProperty(DRIVER)) {
             case "chrome":
-                Configuration.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver234.exe");
+                Configuration.setProperty("webdriver.chrome.driver", Configuration.getPropertyFromFile("chromeDriver"));
                 webDriver = new ChromeDriver();
                 break;
             case "firefox":
-                Configuration.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver0191.exe");
+                Configuration.setProperty("webdriver.gecko.driver", Configuration.getPropertyFromFile("geckoDriver"));
                 webDriver = new FirefoxDriver();
                 break;
             case "edge":
                 // For correct working of Edge driver zoom feature should be disabled or set up to 100% only
                 // http://www.winhelponline.com/blog/microsoft-edge-disable-zoom-reset-zoom-level-every-start/
-                Configuration.setProperty("webdriver.edge.driver", "src/test/resources/MicrosoftWebDriver16299.exe");
+                Configuration.setProperty("webdriver.edge.driver", Configuration.getPropertyFromFile("edgeDriver"));
                 webDriver = new EdgeDriver();
                 break;
             case "remote":
-                capabilities = DesiredCapabilities.firefox();
+                DesiredCapabilities capabilities = DesiredCapabilities.firefox();
                 try {
-                    RemoteWebDriver remoteWebDriver = new RemoteWebDriver(new URL(String.format(REMOTE_HOST_URL, GRID_IP)), capabilities);
+                    RemoteWebDriver remoteWebDriver = new RemoteWebDriver(new URL(REMOTE_HOST_URL), capabilities);
                     remoteWebDriver.setFileDetector(new LocalFileDetector());
                     webDriver = remoteWebDriver;
                 } catch (MalformedURLException e) {
@@ -93,7 +92,7 @@ public class BaseTest {
                 break;
             case "headless":
                 capabilities = new DesiredCapabilities();
-                capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,"src/test/resources/phantomjs.exe");
+                capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,Configuration.getPropertyFromFile("phantomJSDriver"));
                 webDriver = new PhantomJSDriver(capabilities);
                 break;
             case "chromeZAP":

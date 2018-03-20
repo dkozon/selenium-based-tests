@@ -1,5 +1,6 @@
 package net.kozon.selenium.example.test.framework.common.owasp;
 
+import net.kozon.selenium.example.test.framework.common.utils.Configuration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -26,7 +27,7 @@ public class OwaspProxyGeckoDriverStrategy extends ProxyStrategy {
 
     private GeckoDriverService owaspZAPService() throws IOException {
         GeckoDriverService service = new GeckoDriverService.Builder()
-                .usingDriverExecutable(new File("src/test/resources/geckodriver0191.exe"))
+                .usingDriverExecutable(new File(Configuration.getPropertyFromFile("geckoDriver")))
                 .usingAnyFreePort()
                 .usingAnyFreePort()
                 .build();
