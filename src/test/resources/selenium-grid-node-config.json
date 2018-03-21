@@ -28,5 +28,6 @@
   "servlets" : [],
   "withoutServlets": [],
   "custom": {},
-  "role": "node"
+  "role": "node",
+  "host": "localhost"
 }
