@@ -2,8 +2,11 @@ package net.kozon.selenium.example.test.framework.google.tests;
 
 import net.kozon.selenium.example.test.framework.common.tests.BaseTest;
 import net.kozon.selenium.example.test.framework.common.utils.PageObjectGoogleManager;
-import org.testng.annotations.*;
 import net.kozon.selenium.example.test.framework.common.utils.UrlProvider;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,6 +30,7 @@ public final class GMailLoginTest extends BaseTest {
     @AfterClass
     private void tearDown() {
         webDriver.quit();
+        tearDownGrid();
     }
 
     //false positive example - wrong password and account has not been logged in but test has been marked as passed

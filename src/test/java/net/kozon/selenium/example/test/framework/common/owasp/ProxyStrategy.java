@@ -13,6 +13,7 @@ abstract class ProxyStrategy {
 
     private static String HTTP_PROXY = Configuration.getPropertyFromFile("proxy");
     private static String SSL_PROXY = Configuration.getPropertyFromFile("proxy");
+
     abstract WebDriver webDriver() throws IOException;
 
     Proxy proxyConfig() {

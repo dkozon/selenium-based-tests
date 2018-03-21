@@ -1,4 +1,4 @@
-package net.kozon.selenium.example.test.framework.common.docker;
+package net.kozon.selenium.example.test.framework.common.grid;
 
 import org.openqa.grid.common.RegistrationRequest;
 import org.openqa.grid.internal.utils.SelfRegisteringRemote;
@@ -49,7 +49,9 @@ public class TestOnGrid {
         remote.setRemoteServer(node);
         try {
             remote.startRemoteServer();
+            remote.sendRegistrationRequest();
             remote.startRegistrationProcess();
+            remote.setTimeout(1800, 5);
             return true;
         } catch (Exception e) {
             logger.error("Cannot establish Selenium Grid NODE", e);

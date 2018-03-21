@@ -1,8 +1,9 @@
 package net.kozon.selenium.example.test.framework.common.tests;
 
+import net.kozon.selenium.example.test.framework.common.grid.TestOnGrid;
 import net.kozon.selenium.example.test.framework.common.owasp.ProxyStrategyFactory;
-import net.kozon.selenium.example.test.framework.common.utils.Configuration;
 import net.kozon.selenium.example.test.framework.common.owasp.WebDriverContext;
+import net.kozon.selenium.example.test.framework.common.utils.Configuration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -39,6 +40,7 @@ public class BaseTest {
     private static ProxyStrategyFactory proxy = new ProxyStrategyFactory();
     private static WebDriverContext context = new WebDriverContext();
 
+    private static DesiredCapabilities capabilities;
     private static final String DRIVER = "driver";
     private static final String REMOTE_HOST_URL = Configuration.getPropertyFromFile("remoteHostURL");
 
@@ -81,7 +83,9 @@ public class BaseTest {
                 webDriver = new EdgeDriver();
                 break;
             case "remote":
-                DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+                Configuration.setProperty("webdriver.gecko.driver", Configuration.getPropertyFromFile("geckoDriver"));
+                setUpGrid();
+                capabilities = DesiredCapabilities.firefox();
                 try {
                     RemoteWebDriver remoteWebDriver = new RemoteWebDriver(new URL(REMOTE_HOST_URL), capabilities);
                     remoteWebDriver.setFileDetector(new LocalFileDetector());
@@ -105,5 +109,16 @@ public class BaseTest {
                 webDriver = context.setProxyStrategy(proxy.getOwaspProxyEdgeDriverStrategy()).webDriver();
                 break;
         }
+    }
+
+    private void setUpGrid() {
+        TestOnGrid testOnGrid = new TestOnGrid();
+        testOnGrid.runHub();
+        testOnGrid.runNode();
+    }
+
+    protected void tearDownGrid() {
+       // TestOnGrid.stopNode();
+        //TestOnGrid.stopHub();
     }
 }
