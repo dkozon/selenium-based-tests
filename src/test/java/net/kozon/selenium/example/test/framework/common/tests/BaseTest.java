@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.InvalidParameterException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Dariusz Kozon on 26.02.2017.
@@ -39,6 +40,7 @@ public class BaseTest {
     private static Logger logger = LoggerFactory.getLogger(BaseTest.class);
     private static ProxyStrategyFactory proxy = new ProxyStrategyFactory();
     private static WebDriverContext context = new WebDriverContext();
+    private static TestOnGrid testOnGrid = new TestOnGrid();
 
     private static DesiredCapabilities capabilities;
     private static final String DRIVER = "driver";
@@ -85,9 +87,8 @@ public class BaseTest {
             case "remote":
                 Configuration.setProperty("webdriver.gecko.driver", Configuration.getPropertyFromFile("geckoDriver"));
                 setUpGrid();
-                capabilities = DesiredCapabilities.firefox();
                 try {
-                    RemoteWebDriver remoteWebDriver = new RemoteWebDriver(new URL(REMOTE_HOST_URL), capabilities);
+                    RemoteWebDriver remoteWebDriver = new RemoteWebDriver(new URL(REMOTE_HOST_URL), DesiredCapabilities.firefox());
                     remoteWebDriver.setFileDetector(new LocalFileDetector());
                     webDriver = remoteWebDriver;
                 } catch (MalformedURLException e) {
@@ -112,13 +113,17 @@ public class BaseTest {
     }
 
     private void setUpGrid() {
-        TestOnGrid testOnGrid = new TestOnGrid();
         testOnGrid.runHub();
         testOnGrid.runNode();
+        try {
+            TimeUnit.SECONDS.sleep(10); // needed for solve problem with Session expiring during execution ong grid
+        } catch (InterruptedException e) {
+            logger.error("Timeout corrupted! ", e);
+        }
     }
 
     protected void tearDownGrid() {
-       // TestOnGrid.stopNode();
-        //TestOnGrid.stopHub();
+        testOnGrid.stopNode();
+        testOnGrid.stopHub();
     }
 }
