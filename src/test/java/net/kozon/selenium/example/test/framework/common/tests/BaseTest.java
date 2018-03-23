@@ -41,8 +41,8 @@ public class BaseTest {
     private static ProxyStrategyFactory proxy = new ProxyStrategyFactory();
     private static WebDriverContext context = new WebDriverContext();
     private static TestOnGrid testOnGrid = new TestOnGrid();
+    private static boolean isGridActive = Boolean.parseBoolean(Configuration.getPropertyFromFile("localhostGridEnabled"));
 
-    private static DesiredCapabilities capabilities;
     private static final String DRIVER = "driver";
     private static final String REMOTE_HOST_URL = Configuration.getPropertyFromFile("remoteHostURL");
 
@@ -85,6 +85,15 @@ public class BaseTest {
                 webDriver = new EdgeDriver();
                 break;
             case "remote":
+                try {
+                    RemoteWebDriver remoteWebDriver = new RemoteWebDriver(new URL(REMOTE_HOST_URL), DesiredCapabilities.firefox());
+                    remoteWebDriver.setFileDetector(new LocalFileDetector());
+                    webDriver = remoteWebDriver;
+                } catch (MalformedURLException e) {
+                    logger.error("Missing RemoteWebDriver instance! ", e);
+                }
+                break;
+            case "remoteOnLocalhost":
                 Configuration.setProperty("webdriver.gecko.driver", Configuration.getPropertyFromFile("geckoDriver"));
                 setUpGrid();
                 try {
@@ -96,7 +105,7 @@ public class BaseTest {
                 }
                 break;
             case "headless":
-                capabilities = new DesiredCapabilities();
+                DesiredCapabilities capabilities = new DesiredCapabilities();
                 capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,Configuration.getPropertyFromFile("phantomJSDriver"));
                 webDriver = new PhantomJSDriver(capabilities);
                 break;
@@ -113,17 +122,23 @@ public class BaseTest {
     }
 
     private void setUpGrid() {
-        testOnGrid.runHub();
-        testOnGrid.runNode();
-        try {
-            TimeUnit.SECONDS.sleep(10); // needed for solve problem with Session expiring during execution ong grid
-        } catch (InterruptedException e) {
-            logger.error("Timeout corrupted! ", e);
+        if(isGridActive) {
+            testOnGrid.runHub();
+            testOnGrid.runNode();
+            try {
+                TimeUnit.SECONDS.sleep(10); // needed for solve problem with Session expiring during execution ong grid
+            } catch (InterruptedException e) {
+                logger.error("Timeout corrupted! ", e);
+            }
+            logger.info("Grid set up and ready for test processing!");
         }
     }
 
-    protected void tearDownGrid() {
-        testOnGrid.stopNode();
-        testOnGrid.stopHub();
+    protected void tearDownGridIfNeeded() {
+        if(isGridActive) {
+            testOnGrid.stopNode();
+            testOnGrid.stopHub();
+            logger.info("Grid closed!");
+        }
     }
 }

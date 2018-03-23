@@ -38,6 +38,7 @@ public final class FileUploadTest extends BaseTest {
     @AfterMethod
     private void tearDown() {
         webDriver.quit();
+        tearDownGridIfNeeded();
         Assertions.assertThat(environmentOnDocker.stopAndRemoveDockerClient(containerId)).isTrue();
     }
 

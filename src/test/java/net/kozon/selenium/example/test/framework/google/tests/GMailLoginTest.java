@@ -30,7 +30,7 @@ public final class GMailLoginTest extends BaseTest {
     @AfterClass
     private void tearDown() {
         webDriver.quit();
-        tearDownGrid();
+        tearDownGridIfNeeded();
     }
 
     //false positive example - wrong password and account has not been logged in but test has been marked as passed
