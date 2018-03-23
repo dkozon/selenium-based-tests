@@ -41,7 +41,7 @@ public class BaseTest {
     private static ProxyStrategyFactory proxy = new ProxyStrategyFactory();
     private static WebDriverContext context = new WebDriverContext();
     private static TestOnGrid testOnGrid = new TestOnGrid();
-    private static boolean isGridActive = Boolean.parseBoolean(Configuration.getPropertyFromFile("localhostGridEnabled"));
+    private static boolean doesGridActive = Boolean.parseBoolean(Configuration.getPropertyFromFile("localhostGridEnabled"));
 
     private static final String DRIVER = "driver";
     private static final String REMOTE_HOST_URL = Configuration.getPropertyFromFile("remoteHostURL");
@@ -71,58 +71,37 @@ public class BaseTest {
     private void setDriver() throws InvalidParameterException, IOException {
         switch (Configuration.getProperty(DRIVER)) {
             case "chrome":
-                Configuration.setProperty("webdriver.chrome.driver", Configuration.getPropertyFromFile("chromeDriver"));
-                webDriver = new ChromeDriver();
+                setChromeDriver();
                 break;
             case "firefox":
-                Configuration.setProperty("webdriver.gecko.driver", Configuration.getPropertyFromFile("geckoDriver"));
-                webDriver = new FirefoxDriver();
+                setGeckoDriver();
                 break;
             case "edge":
-                // For correct working of Edge driver zoom feature should be disabled or set up to 100% only
-                // http://www.winhelponline.com/blog/microsoft-edge-disable-zoom-reset-zoom-level-every-start/
-                Configuration.setProperty("webdriver.edge.driver", Configuration.getPropertyFromFile("edgeDriver"));
-                webDriver = new EdgeDriver();
+                setEdgeDriver();
                 break;
             case "remote":
-                try {
-                    RemoteWebDriver remoteWebDriver = new RemoteWebDriver(new URL(REMOTE_HOST_URL), DesiredCapabilities.firefox());
-                    remoteWebDriver.setFileDetector(new LocalFileDetector());
-                    webDriver = remoteWebDriver;
-                } catch (MalformedURLException e) {
-                    logger.error("Missing RemoteWebDriver instance! ", e);
-                }
+                setRemoteDriver();
                 break;
             case "remoteOnLocalhost":
-                Configuration.setProperty("webdriver.gecko.driver", Configuration.getPropertyFromFile("geckoDriver"));
-                setUpGrid();
-                try {
-                    RemoteWebDriver remoteWebDriver = new RemoteWebDriver(new URL(REMOTE_HOST_URL), DesiredCapabilities.firefox());
-                    remoteWebDriver.setFileDetector(new LocalFileDetector());
-                    webDriver = remoteWebDriver;
-                } catch (MalformedURLException e) {
-                    logger.error("Missing RemoteWebDriver instance! ", e);
-                }
+                setRemoteOnLocalhost();
                 break;
             case "headless":
-                DesiredCapabilities capabilities = new DesiredCapabilities();
-                capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,Configuration.getPropertyFromFile("phantomJSDriver"));
-                webDriver = new PhantomJSDriver(capabilities);
+                setHeadless();
                 break;
             case "chromeZAP":
-                webDriver = context.setProxyStrategy(proxy.getOwaspProxyChromeDriverStrategy()).webDriver();
+                setChromeDriverThroughZAP();
                 break;
             case "firefoxZAP":
-                webDriver = context.setProxyStrategy(proxy.getOwaspProxyGeckoDriverStrategy()).webDriver();
+                setGeckoDriverThroughZAP();
                 break;
             case "edgeZAP":
-                webDriver = context.setProxyStrategy(proxy.getOwaspProxyEdgeDriverStrategy()).webDriver();
+                setEdgeDriverThroughZAP();
                 break;
         }
     }
 
     private void setUpGrid() {
-        if(isGridActive) {
+        if(doesGridActive) {
             testOnGrid.runHub();
             testOnGrid.runNode();
             try {
@@ -135,10 +114,67 @@ public class BaseTest {
     }
 
     protected void tearDownGridIfNeeded() {
-        if(isGridActive) {
+        if(doesGridActive) {
             testOnGrid.stopNode();
             testOnGrid.stopHub();
             logger.info("Grid closed!");
         }
+    }
+
+    private void setChromeDriver() {
+        Configuration.setProperty("webdriver.chrome.driver", Configuration.getPropertyFromFile("chromeDriver"));
+        webDriver = new ChromeDriver();
+    }
+
+    private void setGeckoDriver() {
+        Configuration.setProperty("webdriver.gecko.driver", Configuration.getPropertyFromFile("geckoDriver"));
+        webDriver = new FirefoxDriver();
+    }
+
+    private void setEdgeDriver() {
+        // For correct working of Edge driver zoom feature should be disabled or set up to 100% only
+        // http://www.winhelponline.com/blog/microsoft-edge-disable-zoom-reset-zoom-level-every-start/
+        Configuration.setProperty("webdriver.edge.driver", Configuration.getPropertyFromFile("edgeDriver"));
+        webDriver = new EdgeDriver();
+    }
+
+    private void setRemoteDriver() {
+        try {
+            RemoteWebDriver remoteWebDriver = new RemoteWebDriver(new URL(REMOTE_HOST_URL), DesiredCapabilities.firefox());
+            remoteWebDriver.setFileDetector(new LocalFileDetector());
+            webDriver = remoteWebDriver;
+        } catch (MalformedURLException e) {
+            logger.error("Missing RemoteWebDriver instance! ", e);
+        }
+    }
+
+    private void setRemoteOnLocalhost() {
+        Configuration.setProperty("webdriver.gecko.driver", Configuration.getPropertyFromFile("geckoDriver"));
+        setUpGrid();
+        try {
+            RemoteWebDriver remoteWebDriver = new RemoteWebDriver(new URL(REMOTE_HOST_URL), DesiredCapabilities.firefox());
+            remoteWebDriver.setFileDetector(new LocalFileDetector());
+            webDriver = remoteWebDriver;
+        } catch (MalformedURLException e) {
+            logger.error("Missing RemoteWebDriver instance! ", e);
+        }
+    }
+
+    private void setHeadless() {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,Configuration.getPropertyFromFile("phantomJSDriver"));
+        webDriver = new PhantomJSDriver(capabilities);
+    }
+
+    private void setChromeDriverThroughZAP() throws IOException {
+        webDriver = context.setProxyStrategy(proxy.getOwaspProxyChromeDriverStrategy()).webDriver();
+    }
+
+    private void setGeckoDriverThroughZAP() throws IOException {
+        webDriver = context.setProxyStrategy(proxy.getOwaspProxyGeckoDriverStrategy()).webDriver();
+    }
+
+    private void setEdgeDriverThroughZAP() throws IOException {
+        webDriver = context.setProxyStrategy(proxy.getOwaspProxyEdgeDriverStrategy()).webDriver();
     }
 }
