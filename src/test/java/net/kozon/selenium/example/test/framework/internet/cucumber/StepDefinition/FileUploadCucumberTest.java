@@ -3,6 +3,7 @@ package net.kozon.selenium.example.test.framework.internet.cucumber.StepDefiniti
 import com.spotify.docker.client.exceptions.DockerCertificateException;
 import com.spotify.docker.client.exceptions.DockerException;
 import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -22,16 +23,20 @@ public class FileUploadCucumberTest extends BaseTest{
     private static final String NAME_OF_FILE_FOR_UPLOAD = "test.html";
     private static final String PATH_TO_RESOURCE_FOR_UPLOAD = String.format("src/test/resources/%s", NAME_OF_FILE_FOR_UPLOAD);
 
-    @Given("^I have to open File Upload page$")
-    public void i_have_to_open_File_Upload_page() throws InterruptedException, DockerCertificateException, DockerException {
+    @Before
+    public void setUp () throws InterruptedException, DockerCertificateException, DockerException{
         manager = new PageObjectTheInternetManager(webDriver);
         environmentOnDocker = new EnvironmentOnDocker();
         containerId = environmentOnDocker.startDockerClient();
+    }
+
+    @Given("^I have to open File Upload page$")
+    public void iHaveToOpenFileUploadPage()  {
         url = UrlProvider.DOCKER_INTERNET.getUrl();
     }
 
     @When("^I load file to the page$")
-    public void i_load_file_to_the_page() {
+    public void iLoadFileToThePage() {
         manager.getMainPage().loadPage(url);
         Assertions.assertThat(manager.getMainPage().isLoaded()).isTrue();
         manager.getMainPage().clickUploadLink();
@@ -43,7 +48,7 @@ public class FileUploadCucumberTest extends BaseTest{
     }
 
     @Then("^I have confirmation that file is uploaded correctly$")
-    public void i_have_confirmation_that_file_is_uploaded_correctly() {
+    public void iHaveConfirmationThatFileIsUploadedCorrectly() {
         Assertions.assertThat(manager.getFileUploadPage().isFileUploaded(NAME_OF_FILE_FOR_UPLOAD)).isTrue();
     }
 
