@@ -31,6 +31,18 @@ For basic configuration run against Docker Selenium Grid you need to follow belo
 - Then you can run tests against grid using IP address of the docker
 - For stopping docker use *docker-compose stop* (for process in the background) or combination of keys *ctrl+c*
 
+#### Docker configuration for running test environment 
+
+There is example of test which is running against environment set up in docker named **FileUploadTest**.
+
+To run it smoothly you need to have docker environment up and running on execution machine.
+
+Current configuration is running docker container on the same machine where tests are executing - for training purposes it should be good enough
+but for enterprise it would be perfect to split running docker container on different instance than executing tests machine.
+
+First run test while image of docker container with app is not deployed yet, could take about couple of minutes to establish - 
+no worries test will wait until it will be ready and will continue when container will be on place.
+
 #### OWASP ZAP proxy
 
 This feature is dedicated for running tests through OWASP ZAP for basic 

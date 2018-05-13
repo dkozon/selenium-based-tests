@@ -1,8 +1,9 @@
 package net.kozon.selenium.example.test.framework.common.tests;
 
+import net.kozon.selenium.example.test.framework.common.grid.TestOnGrid;
 import net.kozon.selenium.example.test.framework.common.owasp.ProxyStrategyFactory;
-import net.kozon.selenium.example.test.framework.common.utils.Configuration;
 import net.kozon.selenium.example.test.framework.common.owasp.WebDriverContext;
+import net.kozon.selenium.example.test.framework.common.utils.Configuration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -19,6 +20,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.InvalidParameterException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Dariusz Kozon on 26.02.2017.
@@ -36,12 +38,13 @@ import java.security.InvalidParameterException;
 public class BaseTest {
 
     private static Logger logger = LoggerFactory.getLogger(BaseTest.class);
-    private static final String DRIVER = "driver";
-    private static String GRID_IP = "192.168.99.100"; //default docker IP address
-    private static final String REMOTE_HOST_URL = "http://%s:4444/wd/hub";
-    private static DesiredCapabilities capabilities;
     private static ProxyStrategyFactory proxy = new ProxyStrategyFactory();
     private static WebDriverContext context = new WebDriverContext();
+    private static TestOnGrid testOnGrid = new TestOnGrid();
+    private static boolean doesGridActive = Boolean.parseBoolean(Configuration.getPropertyFromFile("localhostGridEnabled"));
+
+    private static final String DRIVER = "driver";
+    private static final String REMOTE_HOST_URL = Configuration.getPropertyFromFile("remoteHostURL");
 
     protected WebDriver webDriver;
 
@@ -51,7 +54,7 @@ public class BaseTest {
         }catch (InvalidParameterException | IOException e){
             logger.warn("Missing 'driver' property. Set driver to default");
             Configuration.setProperty(DRIVER, "firefox");
-            Configuration.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver0191.exe");
+            Configuration.setProperty("webdriver.gecko.driver", Configuration.getPropertyFromFile("geckoDriver"));
             webDriver = new FirefoxDriver();
         }
         finally {
@@ -68,43 +71,110 @@ public class BaseTest {
     private void setDriver() throws InvalidParameterException, IOException {
         switch (Configuration.getProperty(DRIVER)) {
             case "chrome":
-                Configuration.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver234.exe");
-                webDriver = new ChromeDriver();
+                setChromeDriver();
                 break;
             case "firefox":
-                Configuration.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver0191.exe");
-                webDriver = new FirefoxDriver();
+                setGeckoDriver();
                 break;
             case "edge":
-                // For correct working of Edge driver zoom feature should be disabled or set up to 100% only
-                // http://www.winhelponline.com/blog/microsoft-edge-disable-zoom-reset-zoom-level-every-start/
-                Configuration.setProperty("webdriver.edge.driver", "src/test/resources/MicrosoftWebDriver16299.exe");
-                webDriver = new EdgeDriver();
+                setEdgeDriver();
                 break;
             case "remote":
-                capabilities = DesiredCapabilities.firefox();
-                try {
-                    RemoteWebDriver remoteWebDriver = new RemoteWebDriver(new URL(String.format(REMOTE_HOST_URL, GRID_IP)), capabilities);
-                    remoteWebDriver.setFileDetector(new LocalFileDetector());
-                    webDriver = remoteWebDriver;
-                } catch (MalformedURLException e) {
-                    logger.error("Missing RemoteWebDriver instance! ", e);
-                }
+                setRemoteDriver();
+                break;
+            case "remoteOnLocalhost":
+                setRemoteOnLocalhost();
                 break;
             case "headless":
-                capabilities = new DesiredCapabilities();
-                capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,"src/test/resources/phantomjs.exe");
-                webDriver = new PhantomJSDriver(capabilities);
+                setHeadless();
                 break;
             case "chromeZAP":
-                webDriver = context.setProxyStrategy(proxy.getOwaspProxyChromeDriverStrategy()).webDriver();
+                setChromeDriverThroughZAP();
                 break;
             case "firefoxZAP":
-                webDriver = context.setProxyStrategy(proxy.getOwaspProxyGeckoDriverStrategy()).webDriver();
+                setGeckoDriverThroughZAP();
                 break;
             case "edgeZAP":
-                webDriver = context.setProxyStrategy(proxy.getOwaspProxyEdgeDriverStrategy()).webDriver();
+                setEdgeDriverThroughZAP();
                 break;
         }
+    }
+
+    private void setUpGrid() {
+        if(doesGridActive) {
+            testOnGrid.runHub();
+            testOnGrid.runNode();
+            try {
+                TimeUnit.SECONDS.sleep(10); // needed for solve problem with Session expiring during execution ong grid
+            } catch (InterruptedException e) {
+                logger.error("Timeout corrupted! ", e);
+            }
+            logger.info("Grid set up and ready for test processing!");
+        }
+    }
+
+    protected void tearDownGridIfNeeded() {
+        if(doesGridActive) {
+            testOnGrid.stopNode();
+            testOnGrid.stopHub();
+            logger.info("Grid closed!");
+        }
+    }
+
+    private void setChromeDriver() {
+        Configuration.setProperty("webdriver.chrome.driver", Configuration.getPropertyFromFile("chromeDriver"));
+        webDriver = new ChromeDriver();
+    }
+
+    private void setGeckoDriver() {
+        Configuration.setProperty("webdriver.gecko.driver", Configuration.getPropertyFromFile("geckoDriver"));
+        webDriver = new FirefoxDriver();
+    }
+
+    private void setEdgeDriver() {
+        // For correct working of Edge driver zoom feature should be disabled or set up to 100% only
+        // http://www.winhelponline.com/blog/microsoft-edge-disable-zoom-reset-zoom-level-every-start/
+        Configuration.setProperty("webdriver.edge.driver", Configuration.getPropertyFromFile("edgeDriver"));
+        webDriver = new EdgeDriver();
+    }
+
+    private void setRemoteDriver() {
+        try {
+            RemoteWebDriver remoteWebDriver = new RemoteWebDriver(new URL(REMOTE_HOST_URL), DesiredCapabilities.firefox());
+            remoteWebDriver.setFileDetector(new LocalFileDetector());
+            webDriver = remoteWebDriver;
+        } catch (MalformedURLException e) {
+            logger.error("Missing RemoteWebDriver instance! ", e);
+        }
+    }
+
+    private void setRemoteOnLocalhost() {
+        Configuration.setProperty("webdriver.gecko.driver", Configuration.getPropertyFromFile("geckoDriver"));
+        setUpGrid();
+        try {
+            RemoteWebDriver remoteWebDriver = new RemoteWebDriver(new URL(REMOTE_HOST_URL), DesiredCapabilities.firefox());
+            remoteWebDriver.setFileDetector(new LocalFileDetector());
+            webDriver = remoteWebDriver;
+        } catch (MalformedURLException e) {
+            logger.error("Missing RemoteWebDriver instance! ", e);
+        }
+    }
+
+    private void setHeadless() {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,Configuration.getPropertyFromFile("phantomJSDriver"));
+        webDriver = new PhantomJSDriver(capabilities);
+    }
+
+    private void setChromeDriverThroughZAP() throws IOException {
+        webDriver = context.setProxyStrategy(proxy.getOwaspProxyChromeDriverStrategy()).webDriver();
+    }
+
+    private void setGeckoDriverThroughZAP() throws IOException {
+        webDriver = context.setProxyStrategy(proxy.getOwaspProxyGeckoDriverStrategy()).webDriver();
+    }
+
+    private void setEdgeDriverThroughZAP() throws IOException {
+        webDriver = context.setProxyStrategy(proxy.getOwaspProxyEdgeDriverStrategy()).webDriver();
     }
 }

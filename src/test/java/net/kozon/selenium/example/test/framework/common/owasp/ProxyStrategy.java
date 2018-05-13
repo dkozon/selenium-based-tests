@@ -1,5 +1,6 @@
 package net.kozon.selenium.example.test.framework.common.owasp;
 
+import net.kozon.selenium.example.test.framework.common.utils.Configuration;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 
@@ -10,8 +11,9 @@ import java.io.IOException;
  */
 abstract class ProxyStrategy {
 
-    private static String HTTP_PROXY = "localhost:8080";
-    private static String SSL_PROXY = "localhost:8080";
+    private static String HTTP_PROXY = Configuration.getPropertyFromFile("proxy");
+    private static String SSL_PROXY = Configuration.getPropertyFromFile("proxy");
+
     abstract WebDriver webDriver() throws IOException;
 
     Proxy proxyConfig() {

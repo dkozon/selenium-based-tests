@@ -8,6 +8,7 @@ import com.spotify.docker.client.messages.ContainerConfig;
 import com.spotify.docker.client.messages.ContainerCreation;
 import com.spotify.docker.client.messages.HostConfig;
 import com.spotify.docker.client.messages.PortBinding;
+import net.kozon.selenium.example.test.framework.common.utils.Configuration;
 import net.kozon.selenium.example.test.framework.common.utils.CustomWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,19 +24,19 @@ public class EnvironmentOnDocker {
     private static Logger logger = LoggerFactory.getLogger(EnvironmentOnDocker.class);
     private static DockerClient dockerClient;
 
-    private static final String DOCKER_IMAGE_OF_APP = "gprestes/the-internet";
+    private static final String DOCKER_IMAGE_OF_APP = Configuration.getPropertyFromFile("dockerAppImage");
+    private static final String[] PORTS = {Configuration.getPropertyFromFile("dockerAppPort")};
 
     public final String startDockerClient() throws InterruptedException, DockerException, DockerCertificateException {
         dockerClient = DefaultDockerClient.fromEnv().build();
 
         dockerClient.pull(DOCKER_IMAGE_OF_APP);
 
-        String[] ports = {"5000"};
         Map<String, List<PortBinding>> portBindings = new HashMap<>();
 
-        for (String port : ports) {
+        for (String port : PORTS) {
             List<PortBinding> hostPorts = new ArrayList<>();
-            hostPorts.add(PortBinding.of("0.0.0.0/7080", port));
+            hostPorts.add(PortBinding.of("0.0.0.0", port));
             portBindings.put(port, hostPorts);
         }
 
@@ -44,7 +45,7 @@ public class EnvironmentOnDocker {
         ContainerConfig containerConfig = ContainerConfig.builder()
                 .hostConfig(hostConfig)
                 .image(DOCKER_IMAGE_OF_APP)
-                .exposedPorts(ports)
+                .exposedPorts(PORTS)
                 .build();
 
         ContainerCreation creation = dockerClient.createContainer(containerConfig);
@@ -52,17 +53,19 @@ public class EnvironmentOnDocker {
 
         dockerClient.startContainer(id);
 
-        TimeUnit.SECONDS.sleep(10);
+        TimeUnit.SECONDS.sleep(30);
 
         return id;
     }
 
-    public final void stopAndRemoveDockerClient(String id) {
+    public final boolean stopAndRemoveDockerClient(String containerId) {
         try {
-            dockerClient.stopContainer(id, 5);
-            dockerClient.removeContainer(id);
+            dockerClient.stopContainer(containerId, 5);
+            dockerClient.removeContainer(containerId);
+            return true;
         } catch (DockerException | InterruptedException e) {
-            logger.error("Container has not been stopped or removed!", e);
+            logger.error("Problem with closing or removing container!", e);
+            return false;
         }
     }
 }

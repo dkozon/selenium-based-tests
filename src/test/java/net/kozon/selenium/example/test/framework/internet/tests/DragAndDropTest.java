@@ -29,6 +29,7 @@ public final class DragAndDropTest extends BaseTest {
     @AfterMethod
     private void tearDown() {
         webDriver.quit();
+        tearDownGridIfNeeded();
     }
 
     //TODO: does not work [https://github.com/SeleniumHQ/selenium/issues/1365]

@@ -1,5 +1,6 @@
 package net.kozon.selenium.example.test.framework.common.owasp;
 
+import net.kozon.selenium.example.test.framework.common.utils.Configuration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeDriverService;
@@ -26,7 +27,7 @@ public class OwaspProxyEdgeDriverStrategy extends ProxyStrategy {
 
     private EdgeDriverService owaspZAPService() throws IOException {
         EdgeDriverService service = new EdgeDriverService.Builder()
-                .usingDriverExecutable(new File("src/test/resources/MicrosoftWebDriver16299.exe"))
+                .usingDriverExecutable(new File(Configuration.getPropertyFromFile("edgeDriver")))
                 .usingAnyFreePort()
                 .usingAnyFreePort()
                 .build();
