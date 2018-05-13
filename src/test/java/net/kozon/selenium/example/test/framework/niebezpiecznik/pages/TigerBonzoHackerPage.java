@@ -1,6 +1,6 @@
-package net.kozon.selenium.example.test.framework.niebezpiecznik.pageObjects;
+package net.kozon.selenium.example.test.framework.niebezpiecznik.pages;
 
-import net.kozon.selenium.example.test.framework.common.pageObjects.BasePage;
+import net.kozon.selenium.example.test.framework.common.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

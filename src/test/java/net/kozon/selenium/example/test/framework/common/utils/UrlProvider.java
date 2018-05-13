@@ -7,7 +7,7 @@ public enum UrlProvider {
     GOOGLE_MAIN("https://www.google.com/en"),
     THE_INTERNET("https://the-internet.herokuapp.com/"),
     DOCKER_INTERNET("http://localhost:5000"),
-    NIEBEZPIECZNIK("http://192.168.43.210/");
+    NIEBEZPIECZNIK("http://192.168.0.101/");
 
     private final String baseUrl;
 

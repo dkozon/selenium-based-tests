@@ -1,7 +1,7 @@
 package net.kozon.selenium.example.test.framework.common.utils;
 
-import net.kozon.selenium.example.test.framework.niebezpiecznik.pageObjects.MainNiebezpiecznikPage;
-import net.kozon.selenium.example.test.framework.niebezpiecznik.pageObjects.TigerBonzoHackerPage;
+import net.kozon.selenium.example.test.framework.niebezpiecznik.pages.MainNiebezpiecznikPage;
+import net.kozon.selenium.example.test.framework.niebezpiecznik.pages.TigerBonzoHackerPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
