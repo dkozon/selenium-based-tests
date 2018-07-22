@@ -9,6 +9,7 @@ import com.spotify.docker.client.messages.ContainerCreation;
 import com.spotify.docker.client.messages.HostConfig;
 import com.spotify.docker.client.messages.PortBinding;
 import net.kozon.selenium.example.test.framework.common.utils.Configuration;
+import net.kozon.selenium.example.test.framework.common.utils.CustomWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,9 +21,7 @@ import java.util.concurrent.TimeUnit;
 
 public class EnvironmentOnDocker {
 
-
     private static Logger logger = LoggerFactory.getLogger(EnvironmentOnDocker.class);
-
     private static DockerClient dockerClient;
 
     private static final String DOCKER_IMAGE_OF_APP = Configuration.getPropertyFromFile("dockerAppImage");
