@@ -1,9 +1,9 @@
 package net.kozon.selenium.example.test.framework.common.tests;
 
-import net.kozon.selenium.example.test.framework.common.grid.TestOnGrid;
-import net.kozon.selenium.example.test.framework.common.owasp.ProxyStrategyFactory;
-import net.kozon.selenium.example.test.framework.common.owasp.WebDriverContext;
-import net.kozon.selenium.example.test.framework.common.utils.Configuration;
+import net.kozon.selenium.framework.commons.grid.TestOnGrid;
+import net.kozon.selenium.framework.tools.owasp.ProxyStrategyFactory;
+import net.kozon.selenium.framework.tools.owasp.WebDriverContext;
+import net.kozon.selenium.framework.tools.utils.Configuration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;

@@ -1,4 +1,4 @@
-package net.kozon.selenium.example.test.framework.common.utils;
+package net.kozon.selenium.framework.tools.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;

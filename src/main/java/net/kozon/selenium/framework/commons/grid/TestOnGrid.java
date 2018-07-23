@@ -1,4 +1,4 @@
-package net.kozon.selenium.example.test.framework.common.grid;
+package net.kozon.selenium.framework.commons.grid;
 
 import org.openqa.grid.common.RegistrationRequest;
 import org.openqa.grid.internal.utils.SelfRegisteringRemote;

@@ -1,6 +1,6 @@
-package net.kozon.selenium.example.test.framework.common.owasp;
+package net.kozon.selenium.framework.tools.owasp;
 
-import net.kozon.selenium.example.test.framework.common.utils.Configuration;
+import net.kozon.selenium.framework.tools.utils.Configuration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;

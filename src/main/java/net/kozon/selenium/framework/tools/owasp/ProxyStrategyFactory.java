@@ -1,4 +1,4 @@
-package net.kozon.selenium.example.test.framework.common.owasp;
+package net.kozon.selenium.framework.tools.owasp;
 
 /**
  * Created by Dariusz_Kozon on 07.11.2017.

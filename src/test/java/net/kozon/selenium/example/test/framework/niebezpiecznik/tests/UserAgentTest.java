@@ -2,7 +2,7 @@ package net.kozon.selenium.example.test.framework.niebezpiecznik.tests;
 
 import net.kozon.selenium.example.test.framework.common.tests.BaseTest;
 import net.kozon.selenium.example.test.framework.common.utils.PageObjectNiebezpiecznikManager;
-import net.kozon.selenium.example.test.framework.common.utils.UrlProvider;
+import net.kozon.selenium.framework.tools.utils.UrlProvider;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;

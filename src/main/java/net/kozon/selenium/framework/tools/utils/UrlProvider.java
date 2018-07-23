@@ -1,4 +1,4 @@
-package net.kozon.selenium.example.test.framework.common.utils;
+package net.kozon.selenium.framework.tools.utils;
 
 /**
  * Created by Dariusz_Kozon on 16-Jan-17.

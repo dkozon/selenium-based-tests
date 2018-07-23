@@ -1,4 +1,4 @@
-package net.kozon.selenium.example.test.framework.common.owasp;
+package net.kozon.selenium.framework.tools.owasp;
 
 import org.openqa.selenium.WebDriver;
 

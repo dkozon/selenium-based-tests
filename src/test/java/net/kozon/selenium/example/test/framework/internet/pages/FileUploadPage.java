@@ -1,7 +1,7 @@
 package net.kozon.selenium.example.test.framework.internet.pages;
 
 import net.kozon.selenium.example.test.framework.common.pages.BasePage;
-import net.kozon.selenium.example.test.framework.common.utils.CustomWait;
+import net.kozon.selenium.framework.tools.utils.CustomWait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

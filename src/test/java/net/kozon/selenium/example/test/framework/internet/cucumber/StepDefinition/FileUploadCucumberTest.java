@@ -7,10 +7,10 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.kozon.selenium.example.test.framework.common.docker.EnvironmentOnDocker;
 import net.kozon.selenium.example.test.framework.common.tests.BaseTest;
 import net.kozon.selenium.example.test.framework.common.utils.PageObjectTheInternetManager;
-import net.kozon.selenium.example.test.framework.common.utils.UrlProvider;
+import net.kozon.selenium.framework.tools.docker.EnvironmentOnDocker;
+import net.kozon.selenium.framework.tools.utils.UrlProvider;
 import org.assertj.core.api.Assertions;
 
 public class FileUploadCucumberTest extends BaseTest{

@@ -1,4 +1,4 @@
-package net.kozon.selenium.example.test.framework.common.docker;
+package net.kozon.selenium.framework.tools.docker;
 
 import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerClient;
@@ -8,8 +8,7 @@ import com.spotify.docker.client.messages.ContainerConfig;
 import com.spotify.docker.client.messages.ContainerCreation;
 import com.spotify.docker.client.messages.HostConfig;
 import com.spotify.docker.client.messages.PortBinding;
-import net.kozon.selenium.example.test.framework.common.utils.Configuration;
-import net.kozon.selenium.example.test.framework.common.utils.CustomWait;
+import net.kozon.selenium.framework.tools.utils.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

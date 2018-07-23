@@ -1,4 +1,4 @@
-package net.kozon.selenium.example.test.framework.common.utils;
+package net.kozon.selenium.framework.tools.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

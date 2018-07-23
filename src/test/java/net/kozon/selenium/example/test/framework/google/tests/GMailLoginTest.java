@@ -2,7 +2,7 @@ package net.kozon.selenium.example.test.framework.google.tests;
 
 import net.kozon.selenium.example.test.framework.common.tests.BaseTest;
 import net.kozon.selenium.example.test.framework.common.utils.PageObjectGoogleManager;
-import net.kozon.selenium.example.test.framework.common.utils.UrlProvider;
+import net.kozon.selenium.framework.tools.utils.UrlProvider;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;

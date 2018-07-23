@@ -2,10 +2,10 @@ package net.kozon.selenium.example.test.framework.internet.tests;
 
 import com.spotify.docker.client.exceptions.DockerCertificateException;
 import com.spotify.docker.client.exceptions.DockerException;
-import net.kozon.selenium.example.test.framework.common.docker.EnvironmentOnDocker;
 import net.kozon.selenium.example.test.framework.common.tests.BaseTest;
 import net.kozon.selenium.example.test.framework.common.utils.PageObjectTheInternetManager;
-import net.kozon.selenium.example.test.framework.common.utils.UrlProvider;
+import net.kozon.selenium.framework.tools.docker.EnvironmentOnDocker;
+import net.kozon.selenium.framework.tools.utils.UrlProvider;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
