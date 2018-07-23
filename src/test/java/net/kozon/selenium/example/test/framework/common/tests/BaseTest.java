@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Dariusz Kozon on 26.02.2017.
- *
+ * <p>
  * BaseTest is responsible for setting up running browser.
  * Running with maven:
  * for Firefox use -Ddriver=firefox
@@ -32,33 +32,30 @@ import java.util.concurrent.TimeUnit;
  * for remote (establish server and node and then run) -Ddriver=remote
  * for phantomjs -Ddriver=headless
  * for Owasp ZAP proxy -Ddriver=>browserNameZAP in example -Ddriver=firefoxZAP
- *
+ * <p>
  * If driver is not set then default configuration is Firefox (gecko driver).
  */
 public class BaseTest {
 
+    private static final String DRIVER = "driver";
+    private static final String REMOTE_HOST_URL = Configuration.getPropertyFromFile("remoteHostURL");
     private static Logger logger = LoggerFactory.getLogger(BaseTest.class);
     private static ProxyStrategyFactory proxy = new ProxyStrategyFactory();
     private static WebDriverContext context = new WebDriverContext();
     private static TestOnGrid testOnGrid = new TestOnGrid();
     private static boolean doesGridActive = Boolean.parseBoolean(Configuration.getPropertyFromFile("localhostGridEnabled"));
-
-    private static final String DRIVER = "driver";
-    private static final String REMOTE_HOST_URL = Configuration.getPropertyFromFile("remoteHostURL");
-
     protected WebDriver webDriver;
 
     protected BaseTest() {
         try {
             setDriver();
-        }catch (InvalidParameterException | IOException e){
+        } catch (InvalidParameterException | IOException e) {
             logger.warn("Missing 'driver' property. Set driver to default");
             Configuration.setProperty(DRIVER, "firefox");
             Configuration.setProperty("webdriver.gecko.driver", Configuration.getPropertyFromFile("geckoDriver"));
             webDriver = new FirefoxDriver();
-        }
-        finally {
-            switch(Configuration.getProperty(DRIVER)){
+        } finally {
+            switch (Configuration.getProperty(DRIVER)) {
                 case "remote":
                     break;
                 default:
@@ -101,7 +98,7 @@ public class BaseTest {
     }
 
     private void setUpGrid() {
-        if(doesGridActive) {
+        if (doesGridActive) {
             testOnGrid.runHub();
             testOnGrid.runNode();
             try {
@@ -114,7 +111,7 @@ public class BaseTest {
     }
 
     protected void tearDownGridIfNeeded() {
-        if(doesGridActive) {
+        if (doesGridActive) {
             testOnGrid.stopNode();
             testOnGrid.stopHub();
             logger.info("Grid closed!");
@@ -162,7 +159,7 @@ public class BaseTest {
 
     private void setHeadless() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,Configuration.getPropertyFromFile("phantomJSDriver"));
+        capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, Configuration.getPropertyFromFile("phantomJSDriver"));
         webDriver = new PhantomJSDriver(capabilities);
     }
 

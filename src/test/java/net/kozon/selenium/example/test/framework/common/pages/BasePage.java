@@ -13,12 +13,12 @@ public abstract class BasePage<T extends BasePage<T>> {
     public WebDriver webDriver;
     protected CustomWait customWait;
 
-    protected abstract T getThis();
-
-    public BasePage(WebDriver webDriver){
+    public BasePage(WebDriver webDriver) {
         this.webDriver = webDriver;
         customWait = new CustomWait(webDriver);
     }
+
+    protected abstract T getThis();
 
     public abstract boolean isLoaded();
 

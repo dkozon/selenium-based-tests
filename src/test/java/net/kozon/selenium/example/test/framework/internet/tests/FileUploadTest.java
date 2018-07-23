@@ -16,13 +16,12 @@ import org.testng.annotations.Test;
  */
 public final class FileUploadTest extends BaseTest {
 
+    private static final String NAME_OF_FILE_FOR_UPLOAD = "test.html";
+    private static final String PATH_TO_RESOURCE_FOR_UPLOAD = String.format("src/test/resources/%s", NAME_OF_FILE_FOR_UPLOAD);
     private String url;
     private String containerId;
     private PageObjectTheInternetManager manager;
     private EnvironmentOnDocker environmentOnDocker;
-
-    private static final String NAME_OF_FILE_FOR_UPLOAD = "test.html";
-    private static final String PATH_TO_RESOURCE_FOR_UPLOAD = String.format("src/test/resources/%s", NAME_OF_FILE_FOR_UPLOAD);
 
     public FileUploadTest() {
         manager = new PageObjectTheInternetManager(webDriver);

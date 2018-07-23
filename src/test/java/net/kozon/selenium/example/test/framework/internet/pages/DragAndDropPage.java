@@ -12,22 +12,22 @@ import org.openqa.selenium.support.FindBy;
  */
 public final class DragAndDropPage extends BasePage<DragAndDropPage> {
 
-    @FindBy (xpath = "//div[@id='column-a']")
+    @FindBy(xpath = "//div[@id='column-a']")
     private WebElement boxA;
 
-    @FindBy (xpath = "//div[@id='column-b']")
+    @FindBy(xpath = "//div[@id='column-b']")
     private WebElement boxB;
 
-    @FindBy (xpath = "//h3[contains(text(), 'Drag and Drop')]")
+    @FindBy(xpath = "//h3[contains(text(), 'Drag and Drop')]")
     private WebElement dragAndDropPageHeader;
+
+    public DragAndDropPage(WebDriver webDriver) {
+        super(webDriver);
+    }
 
     @Override
     protected DragAndDropPage getThis() {
         return this;
-    }
-
-    public DragAndDropPage(WebDriver webDriver) {
-        super(webDriver);
     }
 
     public DragAndDropPage dragElementToDrop() {

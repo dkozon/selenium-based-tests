@@ -1,7 +1,7 @@
 {
   "port": 4444,
   "newSessionWaitTimeout": 1800,
-  "servlets" : [],
+  "servlets": [],
   "withoutServlets": [],
   "custom": {},
   "capabilityMatcher": "org.openqa.grid.internal.utils.DefaultCapabilityMatcher",

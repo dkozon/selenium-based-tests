@@ -10,10 +10,9 @@ import org.testng.annotations.Test;
 
 public class UserAgentTest extends BaseTest {
 
+    private static final String MESSAGE_FOR_TIGER = "Mocium Panie! Łaskawie prosim o oszczędzenie nas!";
     private String url;
     private PageObjectNiebezpiecznikManager manager;
-
-    private static final String MESSAGE_FOR_TIGER = "Mocium Panie! Łaskawie prosim o oszczędzenie nas!";
 
     public UserAgentTest() {
         manager = new PageObjectNiebezpiecznikManager(webDriver);
@@ -36,7 +35,7 @@ public class UserAgentTest extends BaseTest {
         manager.mainNiebezpiecznikPage().clickUserAgentLink();
         Assertions.assertThat(manager.tigerBonzoHackerPage().isLoaded());
         manager.tigerBonzoHackerPage().fillFieldForQuestion(MESSAGE_FOR_TIGER)
-            .clickChceckButton();
+                .clickChceckButton();
         Assertions.assertThat(manager.tigerBonzoHackerPage().isMessageSent(MESSAGE_FOR_TIGER)).isTrue();
     }
 }

@@ -13,25 +13,24 @@ import net.kozon.selenium.framework.tools.docker.EnvironmentOnDocker;
 import net.kozon.selenium.framework.tools.utils.UrlProvider;
 import org.assertj.core.api.Assertions;
 
-public class FileUploadCucumberTest extends BaseTest{
+public class FileUploadCucumberTest extends BaseTest {
 
+    private static final String NAME_OF_FILE_FOR_UPLOAD = "test.html";
+    private static final String PATH_TO_RESOURCE_FOR_UPLOAD = String.format("src/test/resources/%s", NAME_OF_FILE_FOR_UPLOAD);
     private String url;
     private String containerId;
     private PageObjectTheInternetManager manager;
     private EnvironmentOnDocker environmentOnDocker;
 
-    private static final String NAME_OF_FILE_FOR_UPLOAD = "test.html";
-    private static final String PATH_TO_RESOURCE_FOR_UPLOAD = String.format("src/test/resources/%s", NAME_OF_FILE_FOR_UPLOAD);
-
     @Before
-    public void setUp () throws InterruptedException, DockerCertificateException, DockerException{
+    public void setUp() throws InterruptedException, DockerCertificateException, DockerException {
         manager = new PageObjectTheInternetManager(webDriver);
         environmentOnDocker = new EnvironmentOnDocker();
         containerId = environmentOnDocker.startDockerClient();
     }
 
     @Given("^I have to open File Upload page$")
-    public void iHaveToOpenFileUploadPage()  {
+    public void iHaveToOpenFileUploadPage() {
         url = UrlProvider.DOCKER_INTERNET.getUrl();
     }
 

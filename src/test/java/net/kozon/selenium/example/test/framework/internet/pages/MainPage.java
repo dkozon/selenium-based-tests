@@ -22,14 +22,14 @@ public final class MainPage extends BasePage<MainPage> {
     @FindBy(xpath = "//a[contains(text(), 'Drag and Drop')]")
     private WebElement dragAndDropLink;
 
-    @Override
-    protected MainPage getThis() {
-        return this;
-    }
-
     public MainPage(WebDriver webDriver) {
         super(webDriver);
         customWait = new CustomWait(webDriver);
+    }
+
+    @Override
+    protected MainPage getThis() {
+        return this;
     }
 
     public MainPage clickUploadLink() {

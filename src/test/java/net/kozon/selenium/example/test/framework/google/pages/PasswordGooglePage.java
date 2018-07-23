@@ -19,13 +19,13 @@ public final class PasswordGooglePage extends BasePage<PasswordGooglePage> {
     @FindBy(id = "profileIdentifier")
     private WebElement emailDisplayText;
 
+    public PasswordGooglePage(WebDriver webDriver) {
+        super(webDriver);
+    }
+
     @Override
     protected PasswordGooglePage getThis() {
         return this;
-    }
-
-    public PasswordGooglePage(WebDriver webDriver) {
-        super(webDriver);
     }
 
     public PasswordGooglePage nextButtonClick() {

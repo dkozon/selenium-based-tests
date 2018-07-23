@@ -17,13 +17,13 @@ public final class LoginGooglePage extends BasePage<LoginGooglePage> {
     @FindBy(id = "identifierNext")
     private WebElement nextButton;
 
+    public LoginGooglePage(WebDriver webDriver) {
+        super(webDriver);
+    }
+
     @Override
     protected LoginGooglePage getThis() {
         return this;
-    }
-
-    public LoginGooglePage(WebDriver webDriver) {
-        super(webDriver);
     }
 
     public LoginGooglePage enterMailAddress(String login) {

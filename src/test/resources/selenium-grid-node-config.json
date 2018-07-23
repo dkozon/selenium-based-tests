@@ -1,6 +1,5 @@
 {
-  "capabilities":
-  [
+  "capabilities": [
     {
       "browserName": "firefox",
       "marionette": true,
@@ -25,7 +24,7 @@
   "unregisterIfStillDownAfter": 60000,
   "downPollingLimit": 2,
   "debug": false,
-  "servlets" : [],
+  "servlets": [],
   "withoutServlets": [],
   "custom": {},
   "role": "node",

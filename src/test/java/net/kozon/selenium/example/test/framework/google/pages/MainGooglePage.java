@@ -13,13 +13,13 @@ public final class MainGooglePage extends BasePage<MainGooglePage> {
     @FindBy(xpath = ".//a[contains(text(), 'Sign in')]")
     private WebElement signInButton;
 
+    public MainGooglePage(WebDriver webDriver) {
+        super(webDriver);
+    }
+
     @Override
     protected MainGooglePage getThis() {
         return this;
-    }
-
-    public MainGooglePage(WebDriver webDriver) {
-        super(webDriver);
     }
 
     public MainGooglePage signInButtonClick() {

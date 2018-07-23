@@ -21,7 +21,7 @@ public final class DragAndDropTest extends BaseTest {
         manager = new PageObjectTheInternetManager(webDriver);
     }
 
-    @BeforeMethod (enabled = false)
+    @BeforeMethod(enabled = false)
     private void startUp() {
         url = UrlProvider.THE_INTERNET.getUrl();
     }
@@ -33,7 +33,7 @@ public final class DragAndDropTest extends BaseTest {
     }
 
     //TODO: does not work [https://github.com/SeleniumHQ/selenium/issues/1365]
-    @Test (enabled = false)
+    @Test(enabled = false)
     public void shouldDragBoxAAndDropInBoxBPlace() throws InterruptedException {
         manager.getMainPage().loadPage(url);
         assertThat(manager.getMainPage().isLoaded()).isTrue();

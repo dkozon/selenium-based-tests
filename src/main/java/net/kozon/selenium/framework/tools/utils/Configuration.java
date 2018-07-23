@@ -12,18 +12,17 @@ import java.util.Properties;
 
 /**
  * Created by Dariusz Kozon on 22.06.2017.
- *
+ * <p>
  * Configuration dedicated to cover nullPointerExceptions for missing Property
- *
  */
 public class Configuration {
 
-    private static Logger logger = LoggerFactory.getLogger(Configuration.class);
     private static final String FRAMEWORK_PROPERTIES = "src/test/resources/framework.properties";
+    private static Logger logger = LoggerFactory.getLogger(Configuration.class);
 
     public static String getProperty(String key) {
         final String property = System.getProperty(key);
-        if(property == null) {
+        if (property == null) {
             throw new InvalidParameterException(MessageFormat.format("Missing value for key '{0}'!", key));
         }
         return property;

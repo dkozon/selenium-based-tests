@@ -1,10 +1,6 @@
 package net.kozon.selenium.framework.tools.utils;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,14 +11,13 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
  * Created by Dariusz_Kozon on 16-Jan-17.
- *
+ * <p>
  * Set of methods for interacting with elements (contains explicit timeouts).
- *
  */
 public class CustomWait {
 
-    private static Logger logger = LoggerFactory.getLogger(CustomWait.class);
     private static final int DEFAULT_TIMEOUT_IN_SEC = 10;
+    private static Logger logger = LoggerFactory.getLogger(CustomWait.class);
     private final WebDriver webDriver;
 
     public CustomWait(WebDriver driver) {
@@ -84,7 +79,7 @@ public class CustomWait {
     public void clickElement(final By by, final int timeoutInSeconds) {
         FluentWait<WebDriver> wait = createWait(timeoutInSeconds);
         wait.until(driver -> {
-            if(isElementClickable(driver.findElement(by))) {
+            if (isElementClickable(driver.findElement(by))) {
                 driver.findElement(by).click();
             }
             return true;
@@ -94,7 +89,7 @@ public class CustomWait {
     public void clickElement(final WebElement element, final int timeoutInSeconds) {
         FluentWait<WebDriver> wait = createWait(timeoutInSeconds);
         wait.until(driver -> {
-            if(isElementClickable(element)) {
+            if (isElementClickable(element)) {
                 element.click();
             }
             return true;
@@ -131,7 +126,7 @@ public class CustomWait {
                     return driver.findElement(by).getAttribute(attributeName);
                 }
             } catch (NoSuchElementException e) {
-                logger.error("Element not found! Can't get '"+attributeName+"'...", e);
+                logger.error("Element not found! Can't get '" + attributeName + "'...", e);
             }
             return "";
         });

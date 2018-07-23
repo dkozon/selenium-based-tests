@@ -17,22 +17,19 @@ import java.io.File;
 public final class FileUploadPage extends BasePage<FileUploadPage> {
 
     private static Logger logger = LoggerFactory.getLogger(CustomWait.class);
-
-    @Override
-    protected FileUploadPage getThis() {
-        return this;
-    }
-
-    @FindBy (id = "file-upload")
+    @FindBy(id = "file-upload")
     private WebElement fileUploadController;
-
-    @FindBy (id = "file-submit")
+    @FindBy(id = "file-submit")
     private WebElement uploadButton;
-
     private String fileUploadConfirmation = "//div[@id='uploaded-files' and contains(text(), '%s')]";
 
     public FileUploadPage(WebDriver webDriver) {
         super(webDriver);
+    }
+
+    @Override
+    protected FileUploadPage getThis() {
+        return this;
     }
 
     public FileUploadPage uploadFile(String filePath) {

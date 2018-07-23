@@ -43,7 +43,7 @@ public final class GMailLoginTest extends BaseTest {
         manager.loginPage()
                 .enterMailAddress(login)
                 .alternateClickNextButton();
-                //.clickNextButton();
+        //.clickNextButton();
         assertThat(manager.passwordPage().getEmailDisplayed()).contains(login + "@gmail.com");
         manager.passwordPage()
                 .enterPassword(password)

@@ -20,11 +20,10 @@ import java.util.concurrent.TimeUnit;
 
 public class EnvironmentOnDocker {
 
-    private static Logger logger = LoggerFactory.getLogger(EnvironmentOnDocker.class);
-    private static DockerClient dockerClient;
-
     private static final String DOCKER_IMAGE_OF_APP = Configuration.getPropertyFromFile("dockerAppImage");
     private static final String[] PORTS = {Configuration.getPropertyFromFile("dockerAppPort")};
+    private static Logger logger = LoggerFactory.getLogger(EnvironmentOnDocker.class);
+    private static DockerClient dockerClient;
 
     public final String startDockerClient() throws InterruptedException, DockerException, DockerCertificateException {
         dockerClient = DefaultDockerClient.fromEnv().build();
