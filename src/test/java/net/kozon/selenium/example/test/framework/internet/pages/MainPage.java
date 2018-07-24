@@ -6,9 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-/**
- * Created by Dariusz_Kozon on 18-Apr-17.
- */
 public final class MainPage extends BasePage<MainPage> {
 
     private CustomWait customWait;

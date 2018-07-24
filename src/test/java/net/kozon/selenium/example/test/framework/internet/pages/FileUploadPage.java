@@ -11,9 +11,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 
-/**
- * Created by Dariusz_Kozon on 17-May-17.
- */
 public final class FileUploadPage extends BasePage<FileUploadPage> {
 
     private static Logger logger = LoggerFactory.getLogger(CustomWait.class);

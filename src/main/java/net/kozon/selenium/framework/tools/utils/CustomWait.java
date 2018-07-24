@@ -10,8 +10,6 @@ import org.slf4j.LoggerFactory;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
- * Created by Dariusz_Kozon on 16-Jan-17.
- * <p>
  * Set of methods for interacting with elements (contains explicit timeouts).
  */
 public class CustomWait {

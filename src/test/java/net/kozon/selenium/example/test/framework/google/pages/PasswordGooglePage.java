@@ -5,9 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-/**
- * Created by Dariusz_Kozon on 16-Jan-17.
- */
 public final class PasswordGooglePage extends BasePage<PasswordGooglePage> {
 
     @FindBy(id = "passwordNext")

@@ -6,9 +6,6 @@ import net.kozon.selenium.example.test.framework.internet.pages.MainPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- * Created by Dariusz_Kozon on 17-May-17.
- */
 public class PageObjectTheInternetManager {
 
     private final WebDriver webDriver;

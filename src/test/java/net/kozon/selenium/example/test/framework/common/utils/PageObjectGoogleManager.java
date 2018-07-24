@@ -6,9 +6,6 @@ import net.kozon.selenium.example.test.framework.google.pages.PasswordGooglePage
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- * Created by Dariusz_Kozon on 12-Jan-17.
- */
 public class PageObjectGoogleManager {
 
     private final WebDriver webDriver;

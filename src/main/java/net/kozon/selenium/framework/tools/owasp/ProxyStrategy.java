@@ -6,9 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
 
-/**
- * Created by Dariusz_Kozon on 06.11.2017.
- */
+
 abstract class ProxyStrategy {
 
     private static String HTTP_PROXY = Configuration.getPropertyFromFile("proxy");

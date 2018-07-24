@@ -10,9 +10,6 @@ import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Created by Dariusz_Kozon on 12-Jan-17.
- */
 public final class GMailLoginTest extends BaseTest {
 
     private String url;

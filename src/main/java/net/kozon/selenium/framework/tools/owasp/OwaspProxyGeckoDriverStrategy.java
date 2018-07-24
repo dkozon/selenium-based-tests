@@ -9,9 +9,7 @@ import org.openqa.selenium.firefox.GeckoDriverService;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by Dariusz_Kozon on 06.11.2017.
- */
+
 public class OwaspProxyGeckoDriverStrategy extends ProxyStrategy {
 
     @Override

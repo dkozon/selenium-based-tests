@@ -9,9 +9,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by Dariusz_Kozon on 06.11.2017.
- */
 public class OwaspProxyChromeDriverStrategy extends ProxyStrategy {
 
     @Override

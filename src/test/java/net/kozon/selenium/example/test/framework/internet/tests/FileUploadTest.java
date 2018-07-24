@@ -11,9 +11,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-/**
- * Created by Dariusz_Kozon on 17-May-17.
- */
 public final class FileUploadTest extends BaseTest {
 
     private static final String NAME_OF_FILE_FOR_UPLOAD = "test.html";

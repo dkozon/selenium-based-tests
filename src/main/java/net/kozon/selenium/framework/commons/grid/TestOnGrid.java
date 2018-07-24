@@ -19,8 +19,8 @@ public class TestOnGrid {
     private static SelfRegisteringRemote remote;
 
     public TestOnGrid() {
-        hub = new Hub(GridHubConfiguration.loadFromJSON("src/test/resources/selenium-grid-hub-config.json"));
-        RegistrationRequest registrationRequest = new RegistrationRequest(GridNodeConfiguration.loadFromJSON("src/test/resources/selenium-grid-node-config.json"));
+        hub = new Hub(GridHubConfiguration.loadFromJSON("src/main/resources/selenium-grid-hub-config.json"));
+        RegistrationRequest registrationRequest = new RegistrationRequest(GridNodeConfiguration.loadFromJSON("src/main/resources/selenium-grid-node-config.json"));
         node = new SeleniumServer(registrationRequest.getConfiguration());
         remote = new SelfRegisteringRemote(registrationRequest);
     }

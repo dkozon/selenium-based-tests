@@ -23,8 +23,6 @@ import java.security.InvalidParameterException;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by Dariusz Kozon on 26.02.2017.
- * <p>
  * BaseTest is responsible for setting up running browser.
  * Running with maven:
  * for Firefox use -Ddriver=firefox

@@ -11,13 +11,11 @@ import java.text.MessageFormat;
 import java.util.Properties;
 
 /**
- * Created by Dariusz Kozon on 22.06.2017.
- * <p>
  * Configuration dedicated to cover nullPointerExceptions for missing Property
  */
 public class Configuration {
 
-    private static final String FRAMEWORK_PROPERTIES = "src/test/resources/framework.properties";
+    private static final String FRAMEWORK_PROPERTIES = "src/main/resources/framework.properties";
     private static Logger logger = LoggerFactory.getLogger(Configuration.class);
 
     public static String getProperty(String key) {

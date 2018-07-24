@@ -7,9 +7,6 @@ import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-/**
- * Created by Dariusz_Kozon on 19-May-17.
- */
 public final class DragAndDropPage extends BasePage<DragAndDropPage> {
 
     @FindBy(xpath = "//div[@id='column-a']")

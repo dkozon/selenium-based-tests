@@ -5,9 +5,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-/**
- * Created by Dariusz_Kozon on 12-Jan-17.
- */
 public abstract class BasePage<T extends BasePage<T>> {
 
     public WebDriver webDriver;

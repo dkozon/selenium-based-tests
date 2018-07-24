@@ -4,9 +4,6 @@ import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
 
-/**
- * Created by Dariusz_Kozon on 07.11.2017.
- */
 public class WebDriverContext {
     private ProxyStrategy strategy;
 

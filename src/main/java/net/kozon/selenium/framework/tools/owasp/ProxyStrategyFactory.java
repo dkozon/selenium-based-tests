@@ -1,8 +1,5 @@
 package net.kozon.selenium.framework.tools.owasp;
 
-/**
- * Created by Dariusz_Kozon on 07.11.2017.
- */
 public class ProxyStrategyFactory {
     private OwaspProxyChromeDriverStrategy owaspProxyChromeDriverStrategy;
     private OwaspProxyEdgeDriverStrategy owaspProxyEdgeDriverStrategy;

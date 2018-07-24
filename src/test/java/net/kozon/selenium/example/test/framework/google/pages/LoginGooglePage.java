@@ -6,9 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-/**
- * Created by Dariusz_Kozon on 12-Jan-17.
- */
 public final class LoginGooglePage extends BasePage<LoginGooglePage> {
 
     @FindBy(xpath = ".//input[@id='identifierId']")

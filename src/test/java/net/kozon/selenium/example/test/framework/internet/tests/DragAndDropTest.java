@@ -9,9 +9,6 @@ import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Created by Dariusz_Kozon on 19-May-17.
- */
 public final class DragAndDropTest extends BaseTest {
 
     private String url;
