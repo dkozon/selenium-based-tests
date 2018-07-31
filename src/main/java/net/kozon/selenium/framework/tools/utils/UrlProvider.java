@@ -1,8 +1,5 @@
 package net.kozon.selenium.framework.tools.utils;
 
-/**
- * Created by Dariusz_Kozon on 16-Jan-17.
- */
 public enum UrlProvider {
     GOOGLE_MAIN("https://www.google.com/en"),
     THE_INTERNET("https://the-internet.herokuapp.com/"),
