@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.Duration;
+
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
@@ -27,7 +29,7 @@ public class CustomWait {
     }
 
     private FluentWait<WebDriver> createWait(final int seconds) {
-        return createFluentWait().withTimeout(seconds, SECONDS);
+        return createFluentWait().withTimeout(Duration.ofSeconds(seconds));
     }
 
     public boolean isElementVisible(final WebElement element) {
