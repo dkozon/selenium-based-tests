@@ -9,7 +9,7 @@ import org.openqa.selenium.edge.EdgeOptions;
 import java.io.File;
 import java.io.IOException;
 
-public class OwaspProxyEdgeDriverStrategy extends ProxyStrategy {
+public class ProxyEdgeDriverStrategy extends ProxyStrategy {
 
     @Override
     public WebDriver webDriver() throws IOException {

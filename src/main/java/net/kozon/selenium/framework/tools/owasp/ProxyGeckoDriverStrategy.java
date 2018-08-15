@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 
-public class OwaspProxyGeckoDriverStrategy extends ProxyStrategy {
+public class ProxyGeckoDriverStrategy extends ProxyStrategy {
 
     @Override
     public WebDriver webDriver() throws IOException {

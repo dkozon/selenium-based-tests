@@ -83,14 +83,14 @@ public class BaseTest {
             case "headless":
                 setHeadless();
                 break;
-            case "chromeZAP":
-                setChromeDriverThroughZAP();
+            case "chromeProxy":
+                setChromeDriverThroughProxy();
                 break;
-            case "firefoxZAP":
-                setGeckoDriverThroughZAP();
+            case "firefoxProxy":
+                setGeckoDriverThroughProxy();
                 break;
-            case "edgeZAP":
-                setEdgeDriverThroughZAP();
+            case "edgeProxy":
+                setEdgeDriverThroughProxy();
                 break;
         }
     }
@@ -161,15 +161,15 @@ public class BaseTest {
         webDriver = new PhantomJSDriver(capabilities);
     }
 
-    private void setChromeDriverThroughZAP() throws IOException {
-        webDriver = context.setProxyStrategy(proxy.getOwaspProxyChromeDriverStrategy()).webDriver();
+    private void setChromeDriverThroughProxy() throws IOException {
+        webDriver = context.setProxyStrategy(proxy.getProxyChromeDriverStrategy()).webDriver();
     }
 
-    private void setGeckoDriverThroughZAP() throws IOException {
-        webDriver = context.setProxyStrategy(proxy.getOwaspProxyGeckoDriverStrategy()).webDriver();
+    private void setGeckoDriverThroughProxy() throws IOException {
+        webDriver = context.setProxyStrategy(proxy.getProxyGeckoDriverStrategy()).webDriver();
     }
 
-    private void setEdgeDriverThroughZAP() throws IOException {
-        webDriver = context.setProxyStrategy(proxy.getOwaspProxyEdgeDriverStrategy()).webDriver();
+    private void setEdgeDriverThroughProxy() throws IOException {
+        webDriver = context.setProxyStrategy(proxy.getProxyEdgeDriverStrategy()).webDriver();
     }
 }

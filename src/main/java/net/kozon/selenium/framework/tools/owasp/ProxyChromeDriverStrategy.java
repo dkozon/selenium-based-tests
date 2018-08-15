@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.io.File;
 import java.io.IOException;
 
-public class OwaspProxyChromeDriverStrategy extends ProxyStrategy {
+public class ProxyChromeDriverStrategy extends ProxyStrategy {
 
     @Override
     public WebDriver webDriver() throws IOException {

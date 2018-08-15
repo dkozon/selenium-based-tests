@@ -1,28 +1,28 @@
 package net.kozon.selenium.framework.tools.owasp;
 
 public class ProxyStrategyFactory {
-    private OwaspProxyChromeDriverStrategy owaspProxyChromeDriverStrategy;
-    private OwaspProxyEdgeDriverStrategy owaspProxyEdgeDriverStrategy;
-    private OwaspProxyGeckoDriverStrategy owaspProxyGeckoDriverStrategy;
+    private ProxyChromeDriverStrategy proxyChromeDriverStrategy;
+    private ProxyEdgeDriverStrategy proxyEdgeDriverStrategy;
+    private ProxyGeckoDriverStrategy proxyGeckoDriverStrategy;
 
-    public OwaspProxyChromeDriverStrategy getOwaspProxyChromeDriverStrategy() {
-        if (owaspProxyChromeDriverStrategy == null) {
-            owaspProxyChromeDriverStrategy = new OwaspProxyChromeDriverStrategy();
+    public ProxyChromeDriverStrategy getProxyChromeDriverStrategy() {
+        if (proxyChromeDriverStrategy == null) {
+            proxyChromeDriverStrategy = new ProxyChromeDriverStrategy();
         }
-        return owaspProxyChromeDriverStrategy;
+        return proxyChromeDriverStrategy;
     }
 
-    public OwaspProxyEdgeDriverStrategy getOwaspProxyEdgeDriverStrategy() {
-        if (owaspProxyEdgeDriverStrategy == null) {
-            owaspProxyEdgeDriverStrategy = new OwaspProxyEdgeDriverStrategy();
+    public ProxyEdgeDriverStrategy getProxyEdgeDriverStrategy() {
+        if (proxyEdgeDriverStrategy == null) {
+            proxyEdgeDriverStrategy = new ProxyEdgeDriverStrategy();
         }
-        return owaspProxyEdgeDriverStrategy;
+        return proxyEdgeDriverStrategy;
     }
 
-    public OwaspProxyGeckoDriverStrategy getOwaspProxyGeckoDriverStrategy() {
-        if (owaspProxyGeckoDriverStrategy == null) {
-            owaspProxyGeckoDriverStrategy = new OwaspProxyGeckoDriverStrategy();
+    public ProxyGeckoDriverStrategy getProxyGeckoDriverStrategy() {
+        if (proxyGeckoDriverStrategy == null) {
+            proxyGeckoDriverStrategy = new ProxyGeckoDriverStrategy();
         }
-        return owaspProxyGeckoDriverStrategy;
+        return proxyGeckoDriverStrategy;
     }
 }

@@ -29,7 +29,7 @@ public class UserAgentTest extends BaseTest {
     }
 
     @Test
-    public void test() {
+    public void TigerBonzoTest() {
         manager.mainNiebezpiecznikPage().loadPage(url);
         Assertions.assertThat(manager.mainNiebezpiecznikPage().isLoaded()).isTrue();
         manager.mainNiebezpiecznikPage().clickUserAgentLink();
