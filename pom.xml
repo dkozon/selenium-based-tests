@@ -6,7 +6,11 @@
 
     <groupId>selenium-based-tests</groupId>
     <artifactId>selenium-based-tests</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
+    <name>Vector Based Tests Parent</name>
+
     <build>
         <plugins>
             <plugin>
@@ -20,62 +24,69 @@
         </plugins>
     </build>
 
-    <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.10</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>3.13.0</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-server -->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-server</artifactId>
-            <version>3.13.0</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.6.1</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.24</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.codeborne/phantomjsdriver -->
-        <dependency>
-            <groupId>com.codeborne</groupId>
-            <artifactId>phantomjsdriver</artifactId>
-            <version>1.4.3</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.spotify/docker-client -->
-        <dependency>
-            <groupId>com.spotify</groupId>
-            <artifactId>docker-client</artifactId>
-            <version>8.11.1</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>2.4.0</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit</artifactId>
-            <version>2.4.0</version>
-            <scope>test</scope>
-        </dependency>
+    <modules>
+        <module>framework</module>
+        <module>selenium-examples</module>
+    </modules>
 
-    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>6.10</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-java</artifactId>
+                <version>3.13.0</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-server -->
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-server</artifactId>
+                <version>3.13.0</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>3.6.1</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>1.7.24</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.codeborne/phantomjsdriver -->
+            <dependency>
+                <groupId>com.codeborne</groupId>
+                <artifactId>phantomjsdriver</artifactId>
+                <version>1.4.3</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.spotify/docker-client -->
+            <dependency>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-client</artifactId>
+                <version>8.11.1</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+            <dependency>
+                <groupId>io.cucumber</groupId>
+                <artifactId>cucumber-java</artifactId>
+                <version>2.4.0</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+            <dependency>
+                <groupId>io.cucumber</groupId>
+                <artifactId>cucumber-junit</artifactId>
+                <version>2.4.0</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 </project>
