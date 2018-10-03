@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class TigerBonzoHackerPage extends BasePage<TigerBonzoHackerPage> {
 
-    @FindBy(xpath = ".//h1[contains(text('Haker Tiger Bonzo'))]")
+    @FindBy(xpath = ".//h1[contains(text(), 'Haker Tiger Bonzo')]")
     private WebElement tigerBonzoHeader;
 
     @FindBy(xpath = ".//form/input[@class='tiger_przepraszam']")
