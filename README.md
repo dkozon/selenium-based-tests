@@ -2,7 +2,7 @@
 
 Project purpose:
 
-*Training project for teaching practical side of test automation using Java 1.8 and Selenium WebDriver 3.*
+*Training project for teaching practical side of test automation using Java 1.8 and Selenium WebDriver 3.x*
 
 *Current project setup has tests and configuration for Google Gmail (www.google.com/en) and The Internet page (https://the-internet.herokuapp.com/).*
 
@@ -11,8 +11,8 @@ Project purpose:
 ### Requirements
 
 Currently selenium-based-tests is supporting examples of tests running against (all windows instances):
-- Firefox 57.0.4 (geckodriver 0.19.1)
-- Chrome  63.0.3239.132 (chromedriver 2.34)
+- Firefox 57.0.4 (geckodriver 0.24.0)
+- Chrome  73.0.3683.20 (chromedriver 73.0.3683.20)
 - Edge (Microsoft WebDriver for windows 10 compilation 16299)
 
 For running against other platforms there is need to download and change drivers for executing tests in BaseTest.java)
@@ -52,6 +52,6 @@ For establishing connection with proxy you need to follow next steps:
 
 - Run OWASP ZAP installed on your environment which will be proxy for time of the tests running
 - Run it with default proxy port on 8080 (can be changed to other port)
-- While running tests from console set parameter -Ddriver=>>browserName<<ZAP for example -Ddriver=firefoxZAP
+- While running tests from console set parameter -Ddriver=>>browserName<<Proxy for example -Ddriver=firefoxProxy
 
 For more supported -Ddriver parameter values look onto BaseTest
