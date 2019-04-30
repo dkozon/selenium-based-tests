@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.InvalidParameterException;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -57,12 +58,8 @@ public class BaseTest {
             Configuration.setProperty("webdriver.gecko.driver", configuration.getPropertyFromFile("geckoDriver"));
             webDriver = new FirefoxDriver();
         } finally {
-            switch (Configuration.getProperty(DRIVER)) {
-                case "remote":
-                    break;
-                default:
-                    webDriver.manage().window().maximize();
-                    break;
+            if (!"remote".equals(Configuration.getProperty(DRIVER))) {
+                Objects.requireNonNull(webDriver).manage().window().maximize();
             }
         }
     }

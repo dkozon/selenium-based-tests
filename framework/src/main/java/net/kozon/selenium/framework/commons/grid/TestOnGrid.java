@@ -25,37 +25,31 @@ public class TestOnGrid {
         remote = new SelfRegisteringRemote(registrationRequest);
     }
 
-    public boolean runHub() {
+    public void runHub() {
         try {
             hub.start();
-            return true;
         } catch (Exception e) {
             logger.error("Cannot establish Selenium Grid HUB ", e);
-            return false;
         }
     }
 
-    public boolean stopHub() {
+    public void stopHub() {
         try {
             hub.stop();
-            return true;
         } catch (Exception e) {
             logger.error("Cannot stop Selenium Grid HUB ", e);
-            return false;
         }
     }
 
-    public boolean runNode() {
+    public void runNode() {
         remote.setRemoteServer(node);
         try {
             remote.startRemoteServer();
             remote.sendRegistrationRequest();
             remote.startRegistrationProcess();
             remote.setTimeout(1800, 5);
-            return true;
         } catch (Exception e) {
             logger.error("Cannot establish Selenium Grid NODE", e);
-            return false;
         }
     }
 

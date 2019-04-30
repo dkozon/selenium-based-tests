@@ -92,4 +92,12 @@
         </dependencies>
     </dependencyManagement>
 
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <name>nexus</name>
+            <url>http://localhost:8081/nexus/content/groups/public</url>
+        </repository>
+    </repositories>
+
 </project>
