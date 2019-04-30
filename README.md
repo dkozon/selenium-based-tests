@@ -11,9 +11,9 @@ Project purpose:
 ### Requirements
 
 Currently selenium-based-tests is supporting examples of tests running against (all windows instances):
-- Firefox 57.0.4 (geckodriver 0.24.0)
-- Chrome  73.0.3683.20 (chromedriver 73.0.3683.20)
-- Edge (Microsoft WebDriver for windows 10 compilation 16299)
+- Firefox (geckodriver 0.24.0)
+- Chrome (chromedriver 73.0.3683.20)
+- Edge (Microsoft WebDriver for Windows 10 compilation 16299)
 
 For running against other platforms there is need to download and change drivers for executing tests in BaseTest.java)
 
@@ -43,15 +43,15 @@ but for enterprise it would be perfect to split running docker container on diff
 First run test while image of docker container with app is not deployed yet, could take about couple of minutes to establish - 
 no worries test will wait until it will be ready and will continue when container will be on place.
 
-#### OWASP ZAP proxy
+#### Proxy
 
-This feature is dedicated for running tests through OWASP ZAP for basic 
-scanning of the application for basic vulnerabilities in tested application.
+This feature is dedicated for running tests through any proxy while you would like to 
+test and analyze your enpoints from external tools like Burp, Owasp ZAP or any other.
 
 For establishing connection with proxy you need to follow next steps:
 
-- Run OWASP ZAP installed on your environment which will be proxy for time of the tests running
-- Run it with default proxy port on 8080 (can be changed to other port)
+- Run your proxy installed on your environment
+- Run it with default proxy port on 8080 (can be changed to other while default one can't be used)
 - While running tests from console set parameter -Ddriver=>>browserName<<Proxy for example -Ddriver=firefoxProxy
 
 For more supported -Ddriver parameter values look onto BaseTest
