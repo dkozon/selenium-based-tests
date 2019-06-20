@@ -31,7 +31,7 @@ public final class GMailLoginTest extends BaseTest {
     }
 
     //false positive example - wrong password and account has not been logged in but test has been marked as passed
-    @Test(dataProvider = "loginGMailData")
+    @Test(dataProvider = "loginGMailData", enabled = false)
     public void shouldLoggedInTest(String login, String password) {
         manager.mainPage()
                 .loadPage(url);
