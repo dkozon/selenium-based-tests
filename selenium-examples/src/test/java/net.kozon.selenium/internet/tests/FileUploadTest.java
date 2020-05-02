@@ -22,20 +22,20 @@ public final class FileUploadTest extends BaseTest {
 
     public FileUploadTest() {
         manager = new PageObjectTheInternetManager(webDriver);
-//        environmentOnDocker = new EnvironmentOnDocker();
+        environmentOnDocker = new EnvironmentOnDocker();
     }
 
     @BeforeMethod
     private void startUp() throws InterruptedException, DockerCertificateException, DockerException {
-//        containerId = environmentOnDocker.startDockerClient();
-        url = UrlProvider.THE_INTERNET.getUrl();
+        containerId = environmentOnDocker.startDockerClient();
+        url = UrlProvider.DOCKER_INTERNET.getUrl();
     }
 
     @AfterMethod
     private void tearDown() {
         webDriver.quit();
-   //     tearDownGridIfNeeded();
- //       Assertions.assertThat(environmentOnDocker.stopAndRemoveDockerClient(containerId)).isTrue();
+        tearDownGridIfNeeded();
+        Assertions.assertThat(environmentOnDocker.stopAndRemoveDockerClient(containerId)).isTrue();
     }
 
     @Test
