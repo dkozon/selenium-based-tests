@@ -53,7 +53,7 @@ public class BaseTest {
         try {
             setDriver();
         } catch (InvalidParameterException | IOException e) {
-            logger.warn("Missing 'driver' property. Set driver to default");
+            logger.info("Missing 'driver' property. Set driver to default");
             Configuration.setProperty(DRIVER, "firefox");
             Configuration.setProperty("webdriver.gecko.driver", configuration.getPropertyFromFile("geckoDriver"));
             webDriver = new FirefoxDriver();
