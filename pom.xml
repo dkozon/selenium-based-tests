@@ -80,7 +80,7 @@
             <dependency>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-client</artifactId>
-                <version>8.15.0</version>
+                <version>8.16.0</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
             <dependency>
