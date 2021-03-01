@@ -4,7 +4,7 @@ import net.kozon.selenium.common.tests.BaseTest;
 import net.kozon.selenium.common.utils.PageObjectGoogleManager;
 import net.kozon.selenium.framework.tools.utils.UrlProvider;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -15,12 +15,9 @@ public final class GMailLoginTest extends BaseTest {
     private String url;
     private PageObjectGoogleManager manager;
 
-    public GMailLoginTest() {
-        manager = new PageObjectGoogleManager(webDriver);
-    }
-
-    @BeforeMethod
+    @BeforeClass
     private void startUp() {
+        manager = new PageObjectGoogleManager(webDriver);
         url = UrlProvider.GOOGLE_MAIN.getUrl();
     }
 

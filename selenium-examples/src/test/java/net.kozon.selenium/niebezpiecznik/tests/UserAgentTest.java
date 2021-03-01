@@ -4,8 +4,8 @@ import net.kozon.selenium.common.tests.BaseTest;
 import net.kozon.selenium.common.utils.PageObjectNiebezpiecznikManager;
 import net.kozon.selenium.framework.tools.utils.UrlProvider;
 import org.assertj.core.api.Assertions;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class UserAgentTest extends BaseTest {
@@ -14,21 +14,18 @@ public class UserAgentTest extends BaseTest {
     private String url;
     private PageObjectNiebezpiecznikManager manager;
 
-    public UserAgentTest() {
-        manager = new PageObjectNiebezpiecznikManager(webDriver);
-    }
-
-    @BeforeMethod
+    @BeforeClass
     private void startUp() {
+        manager = new PageObjectNiebezpiecznikManager(webDriver);
         url = UrlProvider.NIEBEZPIECZNIK.getUrl();
     }
 
-    @AfterMethod
+    @AfterClass
     private void tearDown() {
         webDriver.quit();
     }
 
-    @Test
+    @Test(enabled = false)
     public void TigerBonzoTest() {
         manager.mainNiebezpiecznikPage().loadPage(url);
         Assertions.assertThat(manager.mainNiebezpiecznikPage().isLoaded()).isTrue();

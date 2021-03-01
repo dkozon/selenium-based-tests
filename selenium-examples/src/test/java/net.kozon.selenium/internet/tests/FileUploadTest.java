@@ -7,8 +7,8 @@ import net.kozon.selenium.common.utils.PageObjectTheInternetManager;
 import net.kozon.selenium.framework.tools.docker.EnvironmentOnDocker;
 import net.kozon.selenium.framework.tools.utils.UrlProvider;
 import org.assertj.core.api.Assertions;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public final class FileUploadTest extends BaseTest {
@@ -20,22 +20,19 @@ public final class FileUploadTest extends BaseTest {
     private PageObjectTheInternetManager manager;
     private EnvironmentOnDocker environmentOnDocker;
 
-    public FileUploadTest() {
-        manager = new PageObjectTheInternetManager(webDriver);
-//        environmentOnDocker = new EnvironmentOnDocker();
-    }
-
-    @BeforeMethod
+    @BeforeClass
     private void startUp() throws InterruptedException, DockerCertificateException, DockerException {
+//        environmentOnDocker = new EnvironmentOnDocker();
 //        containerId = environmentOnDocker.startDockerClient();
+        manager = new PageObjectTheInternetManager(webDriver);
         url = UrlProvider.THE_INTERNET.getUrl();
     }
 
-    @AfterMethod
+    @AfterClass
     private void tearDown() {
         webDriver.quit();
-   //     tearDownGridIfNeeded();
- //       Assertions.assertThat(environmentOnDocker.stopAndRemoveDockerClient(containerId)).isTrue();
+//        tearDownGridIfNeeded();
+//        Assertions.assertThat(environmentOnDocker.stopAndRemoveDockerClient(containerId)).isTrue();
     }
 
     @Test
